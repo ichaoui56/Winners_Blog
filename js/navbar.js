@@ -1,10 +1,11 @@
 
 function AddNavbar() {
     
+    
     const navbarHTML = `
     <nav class="relative mx-10 mb-32 rounded-b-2xl px-4 py-4 flex justify-between items-center bg-white">
         <a class="text-3xl font-bold leading-none" href="#">
-            <img src="téléchargement__1_-removebg-preview (1).png" alt="" width="100">
+            <img src="./pictures/logo_nav.png" alt="" width="100">
         </a>
 
 
@@ -49,7 +50,7 @@ function AddNavbar() {
                     class=" absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
             </span>
             <span
-                class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-700 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
             <span
                 class=" relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">Publier
                 une annonce</span>
