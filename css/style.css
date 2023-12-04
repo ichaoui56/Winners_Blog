@@ -11,3 +11,12 @@
 #waterdrop canvas {
     bottom: -70px !important;
 }
+
+
+@media (min-width : 766px) {
+
+    .ilyas{
+        position: absolute;
+    }
+    
+}
