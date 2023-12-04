@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <?php
 include("./db.inc.php");
 
@@ -8,7 +6,7 @@ if (isset($_POST["signup_submit"])) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
     $passwordRepeat = filter_input(INPUT_POST, "password-repeat", FILTER_SANITIZE_SPECIAL_CHARS);
-    $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_SPECIAL_CHARS);
+    $phone = filter_input(INPUT_POST, "phone", FILTER_SANITIZE_NUMBER_INT);
     $userPicture = $_FILES["user-picture"]["tmp_name"];
 
     if (empty($username)) {
@@ -44,4 +42,3 @@ if (isset($_POST["signup_submit"])) {
     mysqli_stmt_close($stmt);
 } else
     header("Location: ../index.php");
->>>>>>> Stashed changes
