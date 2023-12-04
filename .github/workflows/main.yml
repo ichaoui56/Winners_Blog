@@ -1,8 +1,10 @@
 on:
   push:
     branches:
-      - main
+      - main # Adjust the branch if needed
+
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -10,11 +12,11 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-    
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftpupload.net
-        username: ${{ secrets.ftp_username }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: /home/vol15_7/infinityfree.com/if0_35553201/avitoblog.rf.gd/
+        username: if0_35553201
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
