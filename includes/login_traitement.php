@@ -2,14 +2,15 @@
 include("./db.inc.php");
 
 if (isset($_POST["sigin_submit"])) {
-    $email = filter_input($_POST["email"], FILTER_SANITIZE_EMAIL);
-    $password = filter_input($_POST["password"], FILTER_SANITIZE_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
     if (empty($email)) {
-        echo "email is empty";
+        header("Location: ../pages/login.php?email=empty");
+        echo $email;
         exit;
     } else if (empty($password)) {
-        echo "password is empty";
+        header("Location: ../pages/login.php?password=empty");
         exit;
     }
 
@@ -27,10 +28,10 @@ if (isset($_POST["sigin_submit"])) {
             if (password_verify($password, $hashedPassword)) {
                 header("Location: ../index.php?login=success");
             } else {
-                header("Location: ../index.php?login=failed");
+                header("Location: ../pages/login.php?password=incorrect");
             }
         } else {
-            echo "the user isnt found";
+            header("Location: ../pages/login.php?user=notFound");
             exit;
         }
     }
