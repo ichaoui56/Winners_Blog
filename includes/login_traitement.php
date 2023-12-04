@@ -7,10 +7,10 @@ if (isset($_POST["signup_submit"])) {
 
     if (empty($email)) {
         echo "email is empty";
-    } else if (empty($password) || empty($passwordRepeat)) {
+        exit;
+    } else if (empty($password)) {
         echo "password is empty";
-    } else if ($password !== $passwordRepeat) {
-        echo "the passwords is not the same";
+        exit;
     }
 
     $sql = "SELECT * FROM user WHERE user_email=?";
