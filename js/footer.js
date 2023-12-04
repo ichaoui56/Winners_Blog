@@ -1,6 +1,6 @@
 
 function AddFooter() {
-    
+
     const FooterHTML = `
     <div class="page-wrapper">
         <div class="ilyasss overflow-hidden mx-10 ">
