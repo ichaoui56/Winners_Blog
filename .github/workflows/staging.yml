@@ -17,4 +17,4 @@ jobs:
         server: ftpupload.net
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: ./htdocs/avitoblog.000.pe/
+        server-dir: /home/vol15_7/infinityfree.com/if0_35553201/avitoblog.rf.gd
