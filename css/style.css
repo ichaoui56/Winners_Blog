@@ -20,3 +20,11 @@
     }
     
 }
+
+@media (min-width : 1029px) {
+
+    .chaoui {
+        position: absolute;
+    }
+
+}
