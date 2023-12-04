@@ -1,0 +1,10 @@
+#waterdrop {
+
+    position: absolute;
+    height: 50px;
+    width: 297vh;
+}
+
+#waterdrop canvas {
+    bottom: -70px !important;
+}
