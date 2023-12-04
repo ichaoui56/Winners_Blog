@@ -1,8 +1,11 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css');
+
+
 #waterdrop {
 
     position: absolute;
     height: 50px;
-    width: 297vh;
+    width: 100%;
 }
 
 #waterdrop canvas {

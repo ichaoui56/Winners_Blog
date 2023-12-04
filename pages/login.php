@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../pictures/avito.png" />
     <link rel="stylesheet" href="../css/style.css">
-    <title>login page</title>
+    <title>Avito</title>
 </head>
 
 <body class="bg-gray-300 " style="background-color: #d5deef;">
@@ -23,13 +24,13 @@
     <!------------------------------------------end navbar---------------------------------------------- -->
 
 
-    <section class="flex  mx-10 mb-32 flex-col md:flex-row h-screen items-center">
+    <section class="flex mx-10 mb-32 flex-col md:flex-row h-screen items-center">
 
-        <div class="bg-indigo-600 hidden md:block rounded-l-10 w-[800px] md:w-1/2 xl:w-2/3 h-screen">
-            <img src="../pictures/login_pic.png" alt="" class="w-full rounded-l-10 h-full object-cover">
+        <div class="bg-indigo-600  hidden md:block rounded-l-2xl w-[800px] md:w-1/2 xl:w-2/3 h-screen">
+            <img src="../pictures/login_pic.png" alt="" class="w-full rounded-l-2xl h-full object-cover">
         </div>
 
-        <div class="bg-white w-[100%] md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+        <div class="bg-white w-[100%] md:max-w-md lg:max-w-full rounded-r-2xl md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
             flex items-center justify-center">
 
             <div class="w-full h-100">
@@ -40,9 +41,7 @@
                 <form class="mt-6 rounded-l-10" action="#" method="POST">
                     <div>
                         <label class="block text-gray-700">Email Address</label>
-                        <input type="email" name="" id="" placeholder="Enter Email Address"
-                            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                            autofocus autocomplete required>
+                        <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
                     </div>
 
                     <div class="mt-4">
@@ -52,8 +51,7 @@
                     </div>
 
                     <div class="text-right mt-2">
-                        <a href="#"
-                            class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
+                        <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
                             Password?</a>
                     </div>
 
@@ -63,14 +61,11 @@
 
                 <hr class="my-6 border-gray-300 w-full">
 
-                <button type="button"
-                    class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
                     <div class="flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            class="w-6 h-6" viewBox="0 0 48 48">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6" viewBox="0 0 48 48">
                             <defs>
-                                <path id="a"
-                                    d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
+                                <path id="a" d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
                             </defs>
                             <clipPath id="b">
                                 <use xlink:href="#a" overflow="visible" />
@@ -87,8 +82,7 @@
                     </div>
                 </button>
 
-                <p class="mt-8">Need an account? <a href="./Register.php"
-                        class="text-blue-500 hover:text-blue-700 font-semibold">Create
+                <p class="mt-8">Need an account? <a href="./Register.php" class="text-blue-500 hover:text-blue-700 font-semibold">Create
                         an
                         account</a></p>
 
@@ -100,8 +94,7 @@
 
     <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
         <div>
-            <a title="Buy me a beer" href="https://www.avito.ma/" target="_blank"
-                class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+            <a title="Buy me a beer" href="https://www.avito.ma/" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
                 <img class="object-cover object-center w-full h-full rounded-full" src="../pictures/login_pic.png" />
             </a>
         </div>
@@ -120,7 +113,13 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
 
-    <script> jQuery('#waterdrop').raindrops({ color: '#ffffff', canvasHeight: 150, density: 0.1, frequency: 20 });
+    <script>
+        jQuery('#waterdrop').raindrops({
+            color: '#ffffff',
+            canvasHeight: 150,
+            density: 0.1,
+            frequency: 20
+        });
     </script>
 
     <!----------------------------- end footer ------------------------------------->
