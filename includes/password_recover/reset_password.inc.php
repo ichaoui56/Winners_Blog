@@ -1,8 +1,8 @@
 <?php
 
 if (isset($_POST["reset-password-submit"])) {
-    $password = filter_input($_POST["password"], FILTER_SANITIZE_SPECIAL_CHARS);
-    $passwordRepeat = filter_input($_POST["password-repeat"], FILTER_SANITIZE_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+    $passwordRepeat = filter_input(INPUT_POST, "password-repeat", FILTER_SANITIZE_SPECIAL_CHARS);
 
     $selector = $_POST["selector"];
     $validator = hex2bin($_POST["validator"]);

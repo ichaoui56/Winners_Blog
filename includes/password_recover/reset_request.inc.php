@@ -1,7 +1,7 @@
 <?php
 include("../db.inc.php");
 if (isset($_POST["reset-request-submit"])) {
-    $email = filter_input($_POST["email"], FILTER_SANITIZE_EMAIL);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
 
     $selector = bin2hex(random_bytes(8));
     // Random 32 binary bytes
