@@ -23,7 +23,7 @@ function AddFooter() {
             <div class="max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                 <div class="lg:flex lg:items-start lg:gap-8">
                     <a class="text-3xl font-bold leading-none" href="#">
-                        <img src="../pictures/logo_footer.png" alt="" width="100">
+                        <img src="./pictures/logo_footer.png" alt="" width="100">
                     </a>
 
                     <div class="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16">

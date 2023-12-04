@@ -16,7 +16,7 @@
 
 
     <div id="navbar-container"></div>
-    <script src="./js/navbar.js"></script>
+    <script src="./js/navbar_index.js"></script>
     <script src="./js/script.js"></script>
 
 
@@ -25,7 +25,7 @@
 
     <!------------------------------------------start Countainer---------------------------------------------- -->
 
-    <section class="bg-white mx-10 rounded-2xl text-gray-600 body-font">
+    <section class="bg-white mb-32 mx-10 rounded-2xl text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap -m-4">
                 <div class="p-4 md:w-1/3">
@@ -68,7 +68,14 @@
             </div>
         </div>
     </section>
-
+    <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+        <div>
+            <a title="Buy me a beer" href="https://www.avito.ma/" target="_blank"
+                class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+                <img class="object-cover object-center w-full h-full rounded-full" src="./pictures/login_pic.png" />
+            </a>
+        </div>
+    </div>
 
 
     <!------------------------------------------end Countainer---------------------------------------------- -->
@@ -77,7 +84,7 @@
     <!----------------------------- strat footer ------------------------------------->
 
     <div id="Footer-container"></div>
-    <script src="./js/footer.js"></script>
+    <script src="./js/footer_index.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
