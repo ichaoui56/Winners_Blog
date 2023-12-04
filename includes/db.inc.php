@@ -3,12 +3,12 @@
 $db_server = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "";
+$db_name = "blog";
 $conn = "";
 
 // Create connection & check connection
 try {
-    $conn = mysqli_connect($db_server, $db_user, $db_pass);
+    $conn = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
 } catch (mysqli_sql_exception) {
     echo "Not connected: ";
 }
