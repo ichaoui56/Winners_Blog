@@ -4,7 +4,7 @@ function AddNavbar() {
     
     const navbarHTML = `
     <nav class="relative mx-10 mb-32 rounded-b-2xl px-4 py-4 flex justify-between items-center bg-white">
-        <a class="text-3xl font-bold leading-none" href="#">
+        <a class="text-3xl font-bold leading-none" href="../index.php">
             <img src="../pictures/logo_nav.png" alt="" width="100">
         </a>
 
@@ -32,7 +32,7 @@ function AddNavbar() {
             </button>
         </div>
 
-        <a href="#_"
+        <a href="../pages/login.php"
             class=" relative hidden lg:block left-[10%] px-10 py-3 w-48 overflow-hidden font-bold rounded-full group">
             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute top-0 bg-black opacity-[3%]"></span>
             <span

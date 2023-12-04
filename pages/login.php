@@ -24,6 +24,9 @@
     <!------------------------------------------end navbar---------------------------------------------- -->
 
 
+    <!------------------------------------------start container---------------------------------------------- -->
+
+
     <section class="flex mx-10 mb-32 flex-col md:flex-row h-screen items-center">
 
         <div class="bg-indigo-600  hidden md:block rounded-l-2xl w-[800px] md:w-1/2 xl:w-2/3 h-screen">
@@ -51,7 +54,7 @@
                     </div>
 
                     <div class="text-right mt-2">
-                        <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
+                        <a href="../pages/Reset_password.php" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
                             Password?</a>
                     </div>
 
@@ -100,6 +103,9 @@
         </div>
     </div>
 
+
+
+    <!------------------------------------------end container---------------------------------------------- -->
 
 
     <!----------------------------- strat footer ------------------------------------->
