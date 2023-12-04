@@ -130,4 +130,4 @@ function AddNavbar() {
     container.innerHTML = navbarHTML;
 }
 
-AddNavbar();
+    AddNavbar();
