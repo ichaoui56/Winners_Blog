@@ -1,7 +1,7 @@
 <?php
 include("./db.inc.php");
 
-if (isset($_POST["signup_submit"])) {
+if (isset($_POST["sigin_submit"])) {
     $email = filter_input($_POST["email"], FILTER_SANITIZE_EMAIL);
     $password = filter_input($_POST["password"], FILTER_SANITIZE_SPECIAL_CHARS);
 
