@@ -17,4 +17,4 @@ jobs:
         server: ftpupload.net
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /home/vol15_7/infinityfree.com/
+        server-dir: ./htdocs/
