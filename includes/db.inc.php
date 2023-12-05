@@ -1,9 +1,9 @@
 <?php
 
-$db_server = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_name = "blog";
+$db_server = "sql206.infinityfree.com";
+$db_user = "if0_35553201";
+$db_pass = "jS4FFzcVvx";
+$db_name = "if0_35553201_BlogDB";
 $conn = "";
 
 // Create connection & check connection
