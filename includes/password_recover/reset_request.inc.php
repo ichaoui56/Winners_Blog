@@ -63,9 +63,11 @@ if (isset($_POST["reset-request-submit"])) {
         $mailSent = mail($to, $subject, $message, $headers);
 
         if (!$mailSent) {
-            echo "Mail not sent: " . error_get_last()['message'];
-        } else
+            echo "Mail not sent. Additional details: " . error_get_last()['message'];
+            echo '<pre>' . print_r(error_get_last(), true) . '</pre>';
+        } else {
             header("Location: ../../pages/login.php?reset=success");
+        }
     }
 } else
     header("Location: ../../index.php");
