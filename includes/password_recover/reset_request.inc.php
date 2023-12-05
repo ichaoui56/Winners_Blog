@@ -28,7 +28,8 @@ if (isset($_POST["reset-request-submit"])) {
         $res = mysqli_stmt_get_result($stmt);
 
         if ($row = mysqli_fetch_row($res)) {
-            $sql = "DELETE FROM passwordRecovery WHERE 	pwd_reset_email=?";
+
+            $sql = "DELETE FROM passwordrecovery WHERE 	pwd_reset_email=?";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 echo "there is an error 2 ";
