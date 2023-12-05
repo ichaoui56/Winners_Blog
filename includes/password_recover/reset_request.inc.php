@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include("./../db.inc.php");
 
 if (isset($_POST["reset-request-submit"])) {
@@ -58,7 +60,7 @@ if (isset($_POST["reset-request-submit"])) {
         $headers .= "Reply-To: benfianass@gmail.com\r\n";
         $headers .= "Content-type: text/html\r\n";
         mail($to, $subject, $message, $headers);
-    header("Location: ../../pages/login.php?reset=success");
+        header("Location: ../../pages/login.php?reset=success");
     }
 } else
     header("Location: ../../index.php");
