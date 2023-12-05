@@ -18,11 +18,21 @@ if (isset($_POST["reset-password-submit"])) {
         exit;
     }
 
-    $sql = "SELECT * FROM passwordRecovery WHERE pwd_reset_selector='$selector'";
+    $sql = "SELECT * FROM passwordRecovery WHERE pwd_reset_selector= ?";
     $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $selector);
     mysqli_stmt_execute($stmt);
+
     $res = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($res);
+
+    if ($row = mysqli_fetch_assoc($res)) {
+        $hashedValidator = $row["pwd_reset_token"];
+        $expiresDate = $row["pwd_reset_expires"];
+    } else {
+        echo "No matching record found";
+    }
+
     $hashedValidator = $row["pwd_reset_token"];
     $expiresDate = $row["pwd_reset_expires"];
     if (!password_verify($validator, $hashedValidator) && $actualDate <= $expiresDate) {
@@ -39,35 +49,10 @@ if (isset($_POST["reset-password-submit"])) {
             mysqli_stmt_execute($stmt);
             $sql = "DELETE FROM passwordRecovery WHERE pwd_reset_email='$user_email'";
             $stmt = mysqli_stmt_init($conn);
+            mysqli_stmt_prepare($stmt, $sql);
             mysqli_stmt_execute($stmt);
         }
     }
     mysqli_stmt_close($stmt);
-    mysqli_close();
 } else
     header("Location: ../index.php");
-
-
-?>
-
-
-
-<?php
-// this is for the password recover form
-$selector = $_GET["selector"];
-$validator = $_GET["validator"];
-if (empty($selector) || empty($validator)) {
-    echo "Could not validate your request";
-} else {
-    if (ctype_xdigit($selector) && ctype_xdigit($selector)) {
-?>
-        <form action="../includes/password_recover/reset_password.inc.php" method="post">
-            <input type="hidden" name="validator" value="<?php echo $validator; ?>">
-            <input type="hidden" name="selector" value="<?php echo $selector; ?>">
-        </form>
-<?php
-    } else {
-        header("Location: ../index.php");
-    }
-}
-?>
