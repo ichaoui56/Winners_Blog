@@ -65,9 +65,6 @@ if (isset($_POST["reset-request-submit"])) {
         $message = "<p>Click on The link below if you are the one trying to change your password,<br>if not you just ignore this mail and don share the link below.</p>
         <p>Here is your Password link: <br>";
         $message .= "<a href='$url'>$url</a></p>";
-        $headers = "From: Avito Blog <benfianass@gmail.com>\r\n";
-        $headers .= "Reply-To: benfianass@gmail.com\r\n";
-        $headers .= "Content-type: text/html\r\n";
 
         $mail = new PHPMailer(true);
 
