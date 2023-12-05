@@ -45,7 +45,7 @@ if (isset($_POST["reset-request-submit"])) {
         // $email = $row["email"];
         // hashing the binary token and store it in db
         $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO passwordRecovery (pwd_reset_email, pwd_reset_selector, pwd_reset_token, pwd_reset_expires) VALUE (?, ?, ?, ?)";
+        $sql = "INSERT INTO passwordrecovery (pwd_reset_email, pwd_reset_selector, pwd_reset_token, pwd_reset_expires) VALUE (?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_prepare($stmt, $sql);
         mysqli_stmt_bind_param($stmt, "ssss", $email, $selector, $hashedToken, $expiresDate);
