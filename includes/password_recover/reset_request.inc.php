@@ -1,7 +1,15 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 include("./../db.inc.php");
+include("./PHPMailer/src/Exception.php");
+include("./PHPMailer/src/PHPMailer.php");
+include("./PHPMailer/src/SMTP.php");
 
 if (isset($_POST["reset-request-submit"])) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
@@ -60,17 +68,25 @@ if (isset($_POST["reset-request-submit"])) {
         $headers = "From: Avito Blog <benfianass@gmail.com>\r\n";
         $headers .= "Reply-To: benfianass@gmail.com\r\n";
         $headers .= "Content-type: text/html\r\n";
-        $mailSent = mail($to, $subject, $message, $headers);
-        echo $headers . "<br>";
-        echo $email . "<br>";
-        echo $subject . "<br>";
-        echo $message . "<br>";
-        if (!$mailSent) {
-            echo "Mail not sent. Additional details: " . error_get_last()['message'];
-            echo '<pre>' . print_r(error_get_last(), true) . '</pre>';
-        } else {
-            header("Location: ../../pages/login.php?reset=success");
-        }
+
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "Benfianass@gmail.com";
+        $mail->Password = "iqoi liop ddze bjsh";
+        $mail->SMTPSecure = "ssl";
+        $mail->Port = "465";
+
+        $mail->setFrom("Benfianass@gmail.com");
+        $mail->addAddress($to);
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+        $mail->send();
+
+        header("Location: ../../pages/login.php?reset=success");
     }
 } else
     header("Location: ../../index.php");
