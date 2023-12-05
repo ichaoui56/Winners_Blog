@@ -10,7 +10,7 @@ if (isset($_POST["reset-request-submit"])) {
     // Random 32 binary bytes
     $token = random_bytes(32);
     $expiresDate = date("U") + 3600;
-    $url = "http://avitoblog.000.pe//pages/create_new_password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "http://avitoblog.000.pe/test/pages/New_password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     if (empty($email)) {
         echo "email is empty";
