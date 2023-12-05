@@ -61,7 +61,10 @@ if (isset($_POST["reset-request-submit"])) {
         $headers .= "Reply-To: benfianass@gmail.com\r\n";
         $headers .= "Content-type: text/html\r\n";
         $mailSent = mail($to, $subject, $message, $headers);
-
+        echo $headers . "<br>";
+        echo $email . "<br>";
+        echo $subject . "<br>";
+        echo $message . "<br>";
         if (!$mailSent) {
             echo "Mail not sent. Additional details: " . error_get_last()['message'];
             echo '<pre>' . print_r(error_get_last(), true) . '</pre>';
