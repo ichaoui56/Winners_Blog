@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 include("./../db.inc.php");
-include("./PHPMailer/src/Exception.php");
-include("./PHPMailer/src/PHPMailer.php");
-include("./PHPMailer/src/SMTP.php");
+include("./PhpMailer/src/Exception.php");
+include("./PhpMailer/src/PHPMailer.php");
+include("./PhpMailer/src/SMTP.php");
 
 if (isset($_POST["reset-request-submit"])) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
