@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Add</title>
+    <title>Add Article</title>
 </head>
 
 <body>
 
-    <?php include 'navDash.php'; ?>
+    <!-- <?php include 'navDash.php'; ?> -->
 
     <header class="bg-white shadow">
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -57,7 +57,17 @@
                     </div>
 
                     <div class="border-b border-gray-900/10 pb-12">
-
+                        <div class="sm:col-span-2 sm:col-start-1">
+                            <label for="" class="block text-sm font-medium leading-6 text-gray-900">Article
+                                Category</label>
+                            <div class="mt-2">
+                                <select id="" for="" name=""
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-span-full">
                             <label for="product_title" class="block text-sm font-medium leading-6 text-gray-900">Article
                                 Title</label>
@@ -75,18 +85,6 @@
                                 <input type="text" name="product_description" id="product_description"
                                     autocomplete="street-address"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-
-                        <div class="sm:col-span-2 sm:col-start-1">
-                            <label for="" class="block text-sm font-medium leading-6 text-gray-900">Article
-                                Category</label>
-                            <div class="mt-2">
-                                <select id="" for="" name=""
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                </select>
                             </div>
                         </div>
                     </div>
