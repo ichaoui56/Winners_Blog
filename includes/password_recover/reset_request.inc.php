@@ -60,8 +60,12 @@ if (isset($_POST["reset-request-submit"])) {
         $headers = "From: Avito Blog <benfianass@gmail.com>\r\n";
         $headers .= "Reply-To: benfianass@gmail.com\r\n";
         $headers .= "Content-type: text/html\r\n";
-        mail($to, $subject, $message, $headers);
-        header("Location: ../../pages/login.php?reset=success");
+        $mailSent = mail($to, $subject, $message, $headers);
+
+        if (!$mailSent) {
+            echo "Mail not sent: " . error_get_last()['message'];
+        } else
+            header("Location: ../../pages/login.php?reset=success");
     }
 } else
     header("Location: ../../index.php");
