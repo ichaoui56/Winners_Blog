@@ -38,6 +38,7 @@ if (isset($_POST["signup_submit"])) {
     } else {
         mysqli_stmt_bind_param($stmt, "sisss", $username, $phone, $email, $userPicture, $hashedPassword);
         mysqli_stmt_execute($stmt);
+        header("Location: ../pages/login.php?signup=success");
     }
     mysqli_stmt_close($stmt);
 } else
