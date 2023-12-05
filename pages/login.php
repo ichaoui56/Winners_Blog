@@ -41,15 +41,15 @@
 
                 <h1 class="text-3xl md:text-2xl font-bold leading-tight m-12">Log in to your account</h1>
 
-                <form class="mt-6 rounded-l-10" action="../includes/login_traitement.php" method="POST">
+                <form class="mt-6 rounded-l-10" action="#" method="POST">
                     <div>
                         <label class="block text-gray-700">Email Address</label>
-                        <input type="email" name="email" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
+                        <input type="email" name="" id="" placeholder="Enter Email Address" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required>
                     </div>
 
                     <div class="mt-4">
                         <label class="block text-gray-700">Password</label>
-                        <input type="password" name="password" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                        <input type="password" name="" id="" placeholder="Enter Password" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                     focus:bg-white focus:outline-none" required>
                     </div>
 
@@ -59,7 +59,7 @@
                     </div>
 
                     <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
-                    px-4 py-3 mt-6" name="sigin_submit">Log In</button>
+                    px-4 py-3 mt-6">Log In</button>
                 </form>
 
                 <hr class="my-6 border-gray-300 w-full">
