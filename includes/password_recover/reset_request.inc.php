@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include("./../db.inc.php");
 
 if (isset($_POST["reset-request-submit"])) {
@@ -18,7 +20,7 @@ if (isset($_POST["reset-request-submit"])) {
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "there is an error 1 " . mysqli_error();
+        echo "there is an error 1 " . mysqli_error($stmt);
         exit;
     } else {
         mysqli_stmt_bind_param($stmt, "s", $email);
@@ -58,7 +60,7 @@ if (isset($_POST["reset-request-submit"])) {
         $headers .= "Reply-To: benfianass@gmail.com\r\n";
         $headers .= "Content-type: text/html\r\n";
         mail($to, $subject, $message, $headers);
-    header("Location: ../../pages/login.php?reset=success");
+        header("Location: ../../pages/login.php?reset=success");
     }
 } else
     header("Location: ../../index.php");

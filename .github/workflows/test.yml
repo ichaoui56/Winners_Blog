@@ -20,4 +20,4 @@ jobs:
         username: if0_35553201
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
-        server-dir: /home/vol15_7/infinityfree.com/if0_35553201/testavitoblog.rf.gd/
+        server-dir: ./htdocs/test/
