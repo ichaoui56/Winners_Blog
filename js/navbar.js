@@ -3,7 +3,7 @@ function AddNavbar() {
     
     
     const navbarHTML = `
-    <nav class="relative mx-10 mb-32 rounded-b-2xl px-4 py-4 flex justify-between items-center bg-white">
+    <nav class="relative mx-10 mb-20 rounded-b-2xl px-4 py-4 flex justify-between items-center bg-white">
         <a class="text-3xl font-bold leading-none" href="../index.php">
             <img src="../pictures/logo_nav.png" alt="" width="100">
         </a>
