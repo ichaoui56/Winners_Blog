@@ -54,5 +54,6 @@ if (isset($_POST["reset-password-submit"])) {
         }
     }
     mysqli_stmt_close($stmt);
+    header("Location: ../../pages/login.php?email=sent");
 } else
     header("Location: ../index.php");
