@@ -20,7 +20,7 @@ if (isset($_POST["reset-request-submit"])) {
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        echo "there is an error 1 " . mysqli_error();
+        echo "there is an error 1 " . mysqli_error($stmt);
         exit;
     } else {
         mysqli_stmt_bind_param($stmt, "s", $email);
