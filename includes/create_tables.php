@@ -34,14 +34,31 @@ CREATE TABLE IF NOT EXISTS Article (
     creator_id INT(6) UNSIGNED,
     FOREIGN KEY (creator_id) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE
 )";
-
-
 // Execute the SQL query to create the table
 if (mysqli_query($conn, $sql_create_table_article)) {
     echo "Table Article created successfully" . " <br>";
 } else {
     echo "Error creating table: " . mysqli_error($conn) . " <br>";
 }
+
+
+// SQL to create table category
+$sql_create_table_category = "
+CREATE TABLE IF NOT EXISTS Category (
+    id_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(100) NOT NULL,
+    category_article_id INT(6) UNSIGNED,
+    FOREIGN KEY (category_article_id) REFERENCES Article(id_article) ON UPDATE CASCADE ON DELETE CASCADE
+)";
+
+// Execute the SQL query to create the table
+if (mysqli_query($conn, $sql_create_table_category)) {
+    echo "Table Category created successfully" . " <br>";
+} else {
+    echo "Error creating table: " . mysqli_error($conn) . " <br>";
+}
+
+
 
 // SQL to create table Comment
 $sql_create_table_comment = "
