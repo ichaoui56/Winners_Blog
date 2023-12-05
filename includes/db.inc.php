@@ -12,11 +12,11 @@ try {
 } catch (mysqli_sql_exception) {
     echo "Not connected: ";
 }
-//Create Database
+// Create Database
 $sql_create_db = "CREATE DATABASE IF NOT EXISTS Blog";
 $req=mysqli_query($conn, $sql_create_db);
 
-//Check if the database is created
+// Check if the database is created
 if($req){
     echo "Database created successfully";
 }
