@@ -1,7 +1,8 @@
 <?php 
     include '../db.inc.php';
-    $result = $conn->mysqli("select * from `user`");
-    $result.fetchassoc();
+    $result = $conn->query("SELECT * FROM `user`;");
+    $col = $result->fetch_assoc(); 
+    echo $col["user_name"];
 ?>
 
 <!DOCTYPE html>
