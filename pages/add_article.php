@@ -5,20 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>Add Article</title>
 </head>
 
-<body>
+<body class="bg-gray-300 " style="background-color: #d5deef;">
+
+
+    <!------------------------------------------start navbar---------------------------------------------- -->
+
+
+    <div id="navbar-container"></div>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/script.js"></script>
+
+
+    <!------------------------------------------end navbar---------------------------------------------- -->
 
     <!-- <?php include 'navDash.php'; ?> -->
 
-    <header class="bg-white shadow">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Add articls</h1>
-        </div>
-    </header>
-    <main>
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <main class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl w-full">
             <form method="POST" enctype="multipart/form-data">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
@@ -63,8 +70,8 @@
                             <div class="mt-2">
                                 <select id="" for="" name=""
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
+                                    <option value="1">phone</option>
+                                    <option value="2">laptop</option>
                                 </select>
                             </div>
                         </div>
@@ -103,6 +110,29 @@
         </div>
     </main>
     </div>
+
+
+    <!----------------------------- strat footer ------------------------------------->
+
+    <div id="Footer-container"></div>
+    <script src="../js/footer.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+
+    <script>
+        jQuery('#waterdrop').raindrops({
+            color: '#ffffff',
+            canvasHeight: 150,
+            density: 0.1,
+            frequency: 20
+        });
+    </script>
+
+    <!----------------------------- end footer ------------------------------------->
 </body>
 
 </html>
