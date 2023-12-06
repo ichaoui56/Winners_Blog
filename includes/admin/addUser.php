@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "adminHead.php";
 include '../db.inc.php';
 if (isset($_POST['addUser'])) {
     $username = $_POST['username'];
@@ -30,9 +30,9 @@ if (isset($_POST['addUser'])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body class="flex flex-col justify-center">
-<div class="w-full max-w-xs">
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full"   " method="post" name="newUser">
+<body class="">
+<div class="flex justify-center">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[50%]"   " method="post" name="newUser">
     
   <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">

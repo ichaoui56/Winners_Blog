@@ -1,6 +1,6 @@
 <?php
+include "adminHead.php";
 include "../db.inc.php";
-
 if(isset($_POST["edit"])){
     $newUsername = $_POST["newUsername"];
     $newEmail = $_POST["newEmail"];
@@ -27,8 +27,10 @@ if(isset($_POST["edit"])){
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
-<body>
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"  method="post">
+<body class="">
+  <div class="flex justify-center">
+
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[50%]"  method="post">
     
     <div class="mb-6">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -78,5 +80,7 @@ if(isset($_POST["edit"])){
       </button>
     </div>
 </form>
+</div>
+
 </body>
 </html>
