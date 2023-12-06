@@ -1,3 +1,4 @@
+<?php include("./includes/db.inc.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
     <!------------------------------------------start navbar---------------------------------------------- -->
 
 
-    <div id="navbar-container"></div>
+    <div id="navbar-container"><?php include("./js/navbar_index.php"); ?>></div>
     <script src="./js/navbar_index.js"></script>
     <script src="./js/script.js"></script>
 
