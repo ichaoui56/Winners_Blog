@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("./db.inc.php");
 
 if (isset($_POST["sigin_submit"])) {
@@ -26,6 +27,8 @@ if (isset($_POST["sigin_submit"])) {
         if ($row = mysqli_fetch_assoc($res)) {
             $hashedPassword = $row["password"];
             if (password_verify($password, $hashedPassword)) {
+                $_SESSION["user_id"] = $row["id_user"];
+                $_SESSION["login"] = true;
                 header("Location: ../index.php?login=success");
             } else {
                 header("Location: ../pages/login.php?password=incorrect");
