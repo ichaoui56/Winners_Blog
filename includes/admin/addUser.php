@@ -28,7 +28,7 @@ if (isset($_POST['addUser'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Document</title>
+    <title>new user</title>
 </head>
 <body class="">
 <div class="flex justify-center">

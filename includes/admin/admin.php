@@ -13,7 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
-    <title>Document</title>
+    <title>dashboard</title>
 </head>
 <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
 <div class="container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
