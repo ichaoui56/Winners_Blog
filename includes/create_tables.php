@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS User (
     user_picture LONGBLOB NOT NULL, 
     city VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
+    soft_delete TIMESTAMP DEFAULT NULL, 
     UNIQUE KEY unique_user_email (user_email) 
 
 )";
@@ -32,7 +33,6 @@ $sql_create_table_category = "
 CREATE TABLE IF NOT EXISTS Category (
     id_category INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     category VARCHAR(100) NOT NULL
-    
 )";
 
 // Execute the SQL query to create the table
@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS Article (
     article_picture LONGBLOB NOT NULL,
     article_date LONGBLOB NOT NULL,
     creator_id INT(6) UNSIGNED,
+    soft_delete TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (creator_id) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
     category_id INT(6) UNSIGNED,
     FOREIGN KEY (category_id) REFERENCES Category(id_category) ON UPDATE CASCADE ON DELETE CASCADE
@@ -74,6 +75,7 @@ CREATE TABLE IF NOT EXISTS Comment (
     text_cmt VARCHAR(500) NOT NULL,
     date_cmt VARCHAR(50) NOT NULL,
     creator_id INT(6) UNSIGNED,
+    soft_delete TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (creator_id) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
     article_id INT(6) UNSIGNED,
     FOREIGN KEY (article_id) REFERENCES Article(id_article) ON UPDATE CASCADE ON DELETE CASCADE
