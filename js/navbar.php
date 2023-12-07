@@ -1,5 +1,17 @@
 <?php session_start();
 require("../includes/utils/fetchData.php");
+
+// if (!isset($_SESSION["user_id"])) {
+//     header("Location: ./pages/login.php");
+//     exit();
+// }
+
+if (isset($_POST['logout'])) {
+  session_unset();
+  session_destroy();
+  header('Location: ./pages/login.php');
+}
+
 if (isset($_SESSION["user_id"])) {
     $userId = $_SESSION["user_id"];
     $userInfo = getSpecificUser($userId, $conn);
@@ -74,7 +86,7 @@ if (isset($_SESSION["user_id"])) {
                         </li>
                         <hr class="dark:border-gray-700">
                         <li class="font-medium">
-                            <a href="#" class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
+                            <a href="#"  name="logout" class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
                                 <div class="mr-3 text-red-600">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
@@ -186,7 +198,7 @@ if (isset($_SESSION["user_id"])) {
                                     </li>
                                     <hr class="dark:border-gray-700">
                                     <li class="font-medium">
-                                        <a href="#" class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
+                                        <a href="#"  name="logout" class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
                                             <div class="mr-3 text-red-600">
                                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
