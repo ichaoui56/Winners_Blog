@@ -54,7 +54,7 @@
                                                     class="sr-only">
                                             </label>
                                         </div>
-                                        <input type="file" name="article_picture">
+                                        <input type="file" accept="image/*" name="article_picture">
                                         <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF</p>
                                     </div>
                                 </div>
