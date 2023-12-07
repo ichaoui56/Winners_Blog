@@ -1,8 +1,7 @@
 <?php
-function getSpecificUser($userId)
-{
-    include("../db.inc.php");
 
+function getSpecificUser($userId, $conn)
+{
     $sql = "SELECT * FROM user WHERE id_user=?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
@@ -15,7 +14,6 @@ function getSpecificUser($userId)
 }
 
 function getAllUsers() {
-    include("../db.inc.php");
 
     $output = array();
     $sql = "SELECT * FROM user";
@@ -30,7 +28,6 @@ function getAllUsers() {
 }
 
 function getAllArticles() {
-    include("../db.inc.php");
 
     $output = array();
     $sql = "SELECT * FROM article";
@@ -46,7 +43,6 @@ function getAllArticles() {
 
 function getArticle($articleId)
 {
-    include("../db.inc.php");
 
     $output = array();
     $sql = "SELECT * FROM article WHERE id_article=?";
@@ -62,7 +58,7 @@ function getArticle($articleId)
 }
 
 function getArticleSpecific($userId) {
-    include("../db.inc.php");
+
 
     $output = array();
     $sql = "SELECT * FROM article WHERE creator_id=?";
@@ -81,7 +77,6 @@ function getArticleSpecific($userId) {
 
 function getcomments($articleID)
 {
-    include("../db.inc.php");
 
     $output = array();
     $sql = "SELECT * FROM article WHERE article_id=?";
