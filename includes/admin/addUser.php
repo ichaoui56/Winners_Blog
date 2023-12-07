@@ -1,24 +1,39 @@
 <?php
 include "adminHead.php";
 include '../db.inc.php';
+
 if (isset($_POST['addUser'])) {
     $username = $_POST['username'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-    $picture = $_POST['picture'];
     $password = $_POST['password'];
     $type = $_POST['type'];
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO user (
-        `user_name`, `user_phone`, `user_email`, `user_picture`, `password`
-        ) VALUES 
-        ('$username', '$phone', '$email', '$picture' ,'$password')";
 
-        if($conn->query($query)){
+    // Ensure file upload success
+    if ($_FILES["picture"]["error"] > 0) {
+        echo "Error: " . $_FILES["picture"]["error"];
+        exit; // Exit if file upload has errors
+    }
+
+    // Use prepared statements to prevent SQL injection
+    $query = "INSERT INTO user (`user_name`, `user_phone`, `user_email`, `user_picture`, `password`) VALUES (?, ?, ?, ?, ?)";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sisss", $username, $phone,$email, $picture, $hashedPassword);
+
+    // Read and bind the picture as a binary parameter
+    $picture = file_get_contents($_FILES["picture"]["tmp_name"]);
+    $stmt->send_long_data(2, $picture);
+
+    if ($stmt->execute()) {
         echo("<script>alert('yes')</script>");
-        } else {
+    } else {
         echo "ERROR : " . $query . $conn->error;
-        }
+    }
+
+    $stmt->close();
 }
 ?>
 
@@ -32,7 +47,7 @@ if (isset($_POST['addUser'])) {
 </head>
 <body class="">
 <div class="flex justify-center">
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[50%]"   " method="post" name="newUser">
+  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-[50%]" method="post" name="newUser" enctype='multipart/form-data'>
     
   <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -59,7 +74,7 @@ if (isset($_POST['addUser'])) {
       <label class="block text-gray-700 text-sm font-bold mb-2" for="picture">
         picture
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="picture" type="file" name="picture" placeholder="picture">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="picture" type="file" accept="image/*" name="picture" placeholder="picture">
     </div>
 
       <div class="mb-4">
