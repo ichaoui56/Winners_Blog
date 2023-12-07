@@ -17,8 +17,7 @@
     <!------------------------------------------start navbar---------------------------------------------- -->
 
 
-    <div id="navbar-container"><?php include("./js/navbar_index.php"); ?>></div>
-    <script src="./js/navbar_index.js"></script>
+    <div id="navbar-container"><?php include("./js/navbar_index.php"); ?></div>
     <script src="./js/script.js"></script>
 
 

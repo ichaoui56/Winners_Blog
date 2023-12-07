@@ -1,5 +1,5 @@
 <?php session_start();
-require("./includes/utils/fetchData.php");
+require("../includes/utils/fetchData.php");
 if (isset($_SESSION["user_id"])) {
     $userId = $_SESSION["user_id"];
     $userInfo = getSpecificUser($userId, $conn);
@@ -7,9 +7,10 @@ if (isset($_SESSION["user_id"])) {
     $userPic = $userInfo["user_picture"];
 }
 ?>
+
 <nav class="relative mx-10 mb-32 rounded-b-2xl px-4 py-4 flex justify-between items-center bg-white">
     <a class="text-3xl font-bold leading-none" href="#">
-        <img src="./pictures/logo_nav.png" alt="" width="100">
+        <img src="../pictures/logo_nav.png" alt="" width="100">
     </a>
 
 
@@ -31,9 +32,7 @@ if (isset($_SESSION["user_id"])) {
         </button>
     </div>
 
-
     <!----------- connected -------------->
-
     <?php
     if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
     ?>
@@ -43,8 +42,7 @@ if (isset($_SESSION["user_id"])) {
                 <div class="flex justify-center items-center space-x-3 cursor-pointer">
                     <div class="w-10 h-10 rounded-full overflow-hidden border-2 dark:border-white border-gray-900">
                         <?php echo '<img src="data:image/png;base64,' . base64_encode($userPic) . '" alt="" class="w-full h-full object-cover"/>';
-                        ?>
-                    </div>
+                        ?> </div>
                     <div class="font-semibold dark:text-white text-gray-900 text-lg">
                         <div class="cursor-pointer"><?php echo $username; ?></div>
                     </div>
@@ -90,19 +88,18 @@ if (isset($_SESSION["user_id"])) {
                 </div>
             </div>
         </div>
-
     <?php } else { ?>
         <!------------ not connected -------------->
 
-        <a href="./pages/login.php" class=" relative w-64 h-14 hidden lg:block left-[10%] px-10 py-3 w-48 overflow-hidden font-bold rounded-full group">
+        <a href="../pages/login.php" class=" relative w-64 h-14 hidden lg:block left-[10%] px-10 py-3 w-48 overflow-hidden font-bold rounded-full group">
             <span class="w-32 h-52  rotate-45 translate-x-12 -translate-y-2 absolute top-0 bg-black opacity-[3%]"></span>
             <span class="absolute top-0 left-0 w-[330px] h-96 -mt-1 transition-all duration-900 ease-in-out rotate-45 -translate-x-96 -translate-y-24 bg-black opacity-100 group-hover:-translate-x-1"></span>
             <span class="relative text-[21px] w-96 px-6  text-left text-blbg-black transition-colors duration-500 ease-in-out group-hover:text-gray-200">Se
                 connecter</span>
             <span class="absolute inset-0 border-2 border-blbg-black rounded-full"></span>
         </a>
-
     <?php } ?>
+
     <a href="#_" class="relative hidden lg:block inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group">
         <span class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
             <span class=" absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
@@ -118,7 +115,7 @@ if (isset($_SESSION["user_id"])) {
         <div class="flex flex-col  items-center mb-8 ">
             <a class="mr-auto  mb-6 text-3xl font-bold leading-none" href="#">
                 <a class="text-3xl font-bold leading-none" href="#">
-                    <img src="./pictures/logo_nav.png" alt="" width="100">
+                    <img src="../pictures/logo_nav.png" alt="" width="100">
                 </a>
             </a>
             <button class="navbar-close">
@@ -204,9 +201,10 @@ if (isset($_SESSION["user_id"])) {
                         </div>
                     </div>
 
+                <?php } else { ?>
 
                     <!----------- not connected ---------->
-                <?php } else { ?>
+
                     <a href="#_" class="relative left-[100px] bottom-64 inline-block text-lg group">
                         <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                             <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
@@ -216,6 +214,7 @@ if (isset($_SESSION["user_id"])) {
                         <span class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
                     </a>
                 <?php } ?>
+
 
             </div>
             <p class="my-4 text-xs text-center text-gray-400">
