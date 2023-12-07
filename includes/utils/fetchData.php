@@ -1,4 +1,5 @@
 <?php
+
 function getSpecificUser($userId, $conn)
 {
     $sql = "SELECT * FROM user WHERE id_user=?";
@@ -57,6 +58,7 @@ function getArticle($articleId)
 }
 
 function getArticleSpecific($userId) {
+
 
     $output = array();
     $sql = "SELECT * FROM article WHERE creator_id=?";
