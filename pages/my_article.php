@@ -1,3 +1,4 @@
+<?php include("../includes/db.inc.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,7 @@
 <body class="bg-gray-300" style="background-color: #d5deef;">
 
     <!-- Navbar -->
-    <div id="navbar-container"></div>
-    <script src="../js/navbar.js"></script>
+    <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
     <script src="../js/script.js"></script>
     <!-- End Navbar -->
 
