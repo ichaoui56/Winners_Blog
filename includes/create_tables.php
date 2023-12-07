@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Article (
     id_article INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
     description VARCHAR(500) NOT NULL,
-    article_picture VARCHAR(50) NOT NULL,
+    article_picture LONGBLOB NOT NULL,
     article_date LONGBLOB NOT NULL,
     creator_id INT(6) UNSIGNED,
     FOREIGN KEY (creator_id) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
