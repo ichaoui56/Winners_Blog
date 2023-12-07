@@ -8,7 +8,9 @@ if(isset($_POST["edit"])){
     $picture = $_POST["picture"];
     $newPassword = $_POST["newPassword"];
     $oldUsername = $_POST["username"]; 
-    $sql = "UPDATE user SET user_name='$newUsername',user_phone='$phone', user_email='$newEmail',user_picture='$picture', password='$newPassword' WHERE user_name='$oldUsername'";
+    $sql = "UPDATE user SET user_name='$newUsername',user_phone='$phone',
+       user_email='$newEmail',user_picture='$picture',
+       password='$newPassword' WHERE user_name='$oldUsername'";
     
     if($conn->query($sql)){
       echo("<script>alert('user edited successfully!')</script>") . $oldUsername . "yes";
