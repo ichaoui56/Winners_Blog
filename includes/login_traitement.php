@@ -1,6 +1,5 @@
 <?php
-session_start();
-include("./db.inc.php");
+ 
 
 if (isset($_POST["sigin_submit"])) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);

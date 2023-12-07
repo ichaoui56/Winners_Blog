@@ -22,11 +22,10 @@
 
     <!------------------------------------------end navbar---------------------------------------------- -->
 
-    <!-- <?php include 'navDash.php'; ?> -->
 
     <main class="flex items-center justify-center min-h-screen">
         <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl w-full">
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="../includes/add_article_traitement.php" enctype="multipart/form-data">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
@@ -51,11 +50,11 @@
                                         <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                             <label for="file-upload"
                                                 class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                <input type="file" id="product_picture" name="product_picture"
+                                                <input type="file" id="article_picture" name="article_picture"
                                                     class="sr-only">
                                             </label>
                                         </div>
-                                        <input type="file" name="product_picture">
+                                        <input type="file" accept="image/*" name="article_picture">
                                         <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF</p>
                                     </div>
                                 </div>
@@ -68,28 +67,29 @@
                             <label for="" class="block text-sm font-medium leading-6 text-gray-900">Article
                                 Category</label>
                             <div class="mt-2">
-                                <select id="" for="" name=""
-                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    <option value="1">phone</option>
-                                    <option value="2">laptop</option>
+                                <select id="article_category" for="article_category" name="article_category" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <option value="phone">phone</option>
+                                    <option value="laptop">laptop</option>
+                                    <option value="car">car</option>
+                                    <option value="games">games</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-span-full">
-                            <label for="product_title" class="block text-sm font-medium leading-6 text-gray-900">Article
+                            <label for="article_title" class="block text-sm font-medium leading-6 text-gray-900">Article
                                 Title</label>
                             <div class="mt-2">
-                                <input type="text" name="product_title" id="product_title" autocomplete="street-address"
+                                <input type="text" name="article_title" id="article_title" autocomplete="street-address"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
 
                         <div class="col-span-full">
-                            <label for="product_description"
+                            <label for="article_description"
                                 class="block text-sm font-medium leading-6 text-gray-900">Article
                                 Description</label>
                             <div class="mt-2">
-                                <input type="text" name="product_description" id="product_description"
+                                <input type="text" name="article_description" id="article_description"
                                     autocomplete="street-address"
                                     class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
