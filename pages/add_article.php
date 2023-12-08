@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+include("../includes/db.inc.php");
+
+// Fetch categories
+$categories = [];
+$query = "SELECT * FROM category";
+$result = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_assoc($result)) {
+    $categories[] = $row;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,14 +79,16 @@
 
                     <div class="border-b border-gray-900/10 pb-12">
                         <div class="sm:col-span-2 sm:col-start-1">
-                            <label for="" class="block text-sm font-medium leading-6 text-gray-900">Article
-                                Category</label>
+                            <label for="article_category"
+                                class="block text-sm font-medium leading-6 text-gray-900">Article Category</label>
                             <div class="mt-2">
-                                <select id="article_category" for="article_category" name="article_category" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                    <option value="phone">phone</option>
-                                    <option value="laptop">laptop</option>
-                                    <option value="car">car</option>
-                                    <option value="games">games</option>
+                                <select id="article_category" name="article_category"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    <?php foreach ($categories as $category): ?>
+                                        <option value="<?php echo htmlspecialchars($category['id_category']); ?>">
+                                            <?php echo htmlspecialchars($category['category']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
