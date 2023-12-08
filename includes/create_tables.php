@@ -130,20 +130,20 @@ if (mysqli_query($conn, $sql_create_table_permission)) {
 
 
 // SQL to create table associative User Permission
-$sql_create_table_user_permission = "
-CREATE TABLE IF NOT EXISTS User_Permission (
-    id_user INT(6) UNSIGNED,
+$sql_create_table_role_permission = "
+CREATE TABLE IF NOT EXISTS Role_Permission (
+    id_role INT(6) UNSIGNED,
     id_permission INT(6) UNSIGNED,
-    PRIMARY KEY (id_user, id_permission),
-    INDEX (id_user),
+    PRIMARY KEY (id_role, id_permission),
+    INDEX (id_role),
     INDEX (id_permission),
-    FOREIGN KEY (id_user) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (id_role) REFERENCES Role(id_role) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (id_permission) REFERENCES Permission(id_permission) ON UPDATE CASCADE ON DELETE CASCADE
 )";
 
 // Execute the SQL query to create the table
-if (mysqli_query($conn, $sql_create_table_user_permission)) {
-    echo "Table User_Permission created successfully" . " <br>";
+if (mysqli_query($conn, $sql_create_table_role_permission)) {
+    echo "Table Role_Permission created successfully" . " <br>";
 } else {
     echo "Error creating table: " . mysqli_error($conn) . " <br>";
 }
