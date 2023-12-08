@@ -7,6 +7,7 @@ if (isset($_SESSION["user_id"])) {
     $userId = $_SESSION["user_id"];
     $userInfo = getSpecificUser($userId, $conn);
     $username = $userInfo["user_name"];
+    $usercity = $userInfo["city"];
     $userpic = $userInfo["user_picture"];
     $userphone = $userInfo["user_phone"];
     $useremail = $userInfo["user_email"];
@@ -118,7 +119,7 @@ if (isset($_SESSION["user_id"])) {
                         </div>
                         <div class="mb-2 py-10 text-blueGray-600">
                             <i class="fas fa-city mr-2 text-lg text-blueGray-400"></i>
-                            City
+                            <?php echo $userInfo["city"] ?>
                         </div>
                     </div>
                 </div>
