@@ -17,7 +17,7 @@ $sql_create_db = "CREATE DATABASE IF NOT EXISTS Blog";
 $req=mysqli_query($conn, $sql_create_db);
 
 // Check if the database is created
-if(!$req){
+if(!$req) {
     echo "Error creating database: " . mysqli_error($conn);
 }
 

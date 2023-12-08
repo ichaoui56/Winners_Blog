@@ -1,22 +1,34 @@
+<?php include("../includes/db.inc.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Add Article</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../pictures/avito.png" />
+  <title>Add Article</title>
 </head>
+
 <body class="bg-gray-300" style="background-color: #d5deef;">
 
-    <!-- Navbar -->
-    <div id="navbar-container"></div>
-    <script src="../js/navbar.js"></script>
-    <script src="../js/script.js"></script>
-    <!-- End Navbar -->
+  <!-- Navbar -->
+  <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
+  <?php
+  if (isset($_SESSION["user_id"])) {
+    $userId = $_SESSION["user_id"];
+    $articles = getArticleSpecific($userId, $conn);
+  } else {
+    exit;
+  }
+  ?>
+  <script src="../js/script.js"></script>
+  <!-- End Navbar -->
 
-    <!-- Main Content -->
-    <!--
+  <!-- Main Content -->
+  <!--
   This example requires some changes to your config:
   
   ```
@@ -30,70 +42,83 @@
   }
   ```
 -->
-<div class="bg-white">
-  <div class="mx-auto  px-4 py-16 sm:px-6 sm:py-24  lg:px-8">
-    <h2 class="sr-only">Products</h2>
 
-    <div class="grid grid-cols-5 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-      <a href="#" class="group">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">Earthen Bottle</h3>
-        <p class="mt-1 text-lg font-medium text-gray-900">$48</p>
-      </a>
-      <a href="#" class="group">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">Nomad Tumbler</h3>
-        <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-      </a>
-      <a href="#" class="group">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">Focus Paper Refill</h3>
-        <p class="mt-1 text-lg font-medium text-gray-900">$89</p>
-      </a>
-      <a href="#" class="group">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
-        <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-      </a>
-      <a href="#" class="group">
-        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-          <img src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-        </div>
-        <h3 class="mt-4 text-sm text-gray-700">Machined Mechanical Pencil</h3>
-        <p class="mt-1 text-lg font-medium text-gray-900">$35</p>
-      </a>
 
-      <!-- More products... -->
+  <section class="bg-white mb-32 mx-10 rounded-2xl text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4 js-container">
+        <?php
+        foreach ($articles as $key => $value) {
+        ?>
+          <div class="p-4 md:w-1/3">
+
+            <div class="draggable h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden" draggable="true">
+              <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-48 md:h-36 w-full object-cover object-center"/>';
+              ?>
+              <div class="p-6">
+                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"><?php echo $value["category"]; ?></h2>
+                <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><?php echo $value["title"]; ?></h1>
+                <p class="leading-relaxed mb-3"><?php echo $value["description"]; ?></p>
+                <div class="flex items-center flex-wrap ">
+                  <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>1.2K
+                  </span>
+                  <span class="text-gray-400 inline-flex items-center leading-none text-sm">
+                    <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
+                      </path>
+                    </svg>6
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-    <!-- End Main Content -->
 
-    <!-- Footer -->
-    <div id="Footer-container"></div>
-    <script src="../js/footer.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+  <!------------------------------------------end Countainer---------------------------------------------- -->
 
-    <script>
-        jQuery('#waterdrop').raindrops({
-            color: '#ffffff',
-            canvasHeight: 150,
-            density: 0.1,
-            frequency: 20
-        });
-    </script>
-    <!-- End Footer -->
+  <!-- End Main Content -->
+
+  <!-- Footer -->
+  <div id="Footer-container"></div>
+  <script src="../js/footer.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+
+  <!-- Footer -->
+  <div id="Footer-container"></div>
+  <script src="../js/footer.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+  <script src="../js/drag_drop.js"></script>
+
+  <script>
+    jQuery('#waterdrop').raindrops({
+      color: '#ffffff',
+      canvasHeight: 150,
+      density: 0.1,
+      frequency: 20
+    });
+  </script>
+  <!-- End Footer -->
 </body>
+
 </html>
