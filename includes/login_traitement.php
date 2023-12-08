@@ -26,13 +26,14 @@ if (isset($_POST["sigin_submit"])) {
         $res = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($res)) {
             $hashedPassword = $row["password"];
+            if ($row["soft_delete"] !== NULL) {
+                header("Location: ../pages/login.php?User=notFound");
+                exit;
+            }
             if (password_verify($password, $hashedPassword)) {
                 $_SESSION["user_id"] = $row["id_user"];
                 $_SESSION["login"] = true;
                 header("Location: ../index.php?login=success");
-                exit;
-            } elseif ($row["soft_delete"] !== NULL) {
-                header("Location: ../pages/login.php?User=notFound");
                 exit;
             } else {
                 header("Location: ../pages/login.php?password=incorrect");
