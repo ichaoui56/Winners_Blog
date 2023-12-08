@@ -3,6 +3,7 @@
 function getSpecificUser($userId, $conn)
 {
     $sql = "SELECT * FROM user WHERE id_user=?";
+    
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $userId);
@@ -22,12 +23,12 @@ function getAllUsers() {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     while ($row = mysqli_fetch_assoc($res)) {
-        $output = $row;
+        $output[] = $row;
     }
     return ($output);
 }
 
-function getAllArticles() {
+function getAllArticles($conn) {
 
     $output = array();
     $sql = "SELECT * FROM article";
@@ -36,7 +37,7 @@ function getAllArticles() {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     while ($row = mysqli_fetch_assoc($res)) {
-        $output = $row;
+        $output[] = $row;
     }
     return ($output);
 }
@@ -52,12 +53,12 @@ function getArticle($articleId)
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     while ($row = mysqli_fetch_assoc($res)) {
-        $output = $row;
+        $output[] = $row;
     }
     return ($output);
 }
 
-function getArticleSpecific($userId) {
+function getArticleSpecific($userId, $conn) {
 
 
     $output = array();
@@ -68,7 +69,7 @@ function getArticleSpecific($userId) {
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     while ($row = mysqli_fetch_assoc($res)) {
-        $output = $row;
+        $output[] = $row;
     }
     return ($output);
 
@@ -86,7 +87,7 @@ function getcomments($articleID)
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
     while ($row = mysqli_fetch_assoc($res)) {
-        $output = $row;
+        $output[] = $row;
     }
     return ($output);
 }
