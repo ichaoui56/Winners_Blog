@@ -12,6 +12,10 @@
     bottom: -70px !important;
 }
 
+.dragging {
+    opacity: .5;
+}
+
 
 @media (min-width : 766px) {
 
