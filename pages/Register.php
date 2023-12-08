@@ -83,6 +83,15 @@
                                     <input type="email" name="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="ilyaschaoui@example.com">
                                 </div>
                             </div>
+                            <div class="w-1/2 px-3 mb-5">
+                                <label for="" class="text-xs font-semibold px-1">City</label>
+                                <div class="flex">
+                                    <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                                        <i class="mdi mdi-phone-outline text-gray-400 text-lg"></i>
+                                    </div>
+                                    <input type="text" name="city" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Your city">
+                                </div>
+                            </div>
                         </div>
                         <div class="flex -mx-3">
                             <div class="w-full px-3 mb-12">
@@ -106,27 +115,22 @@
                         </div>
                         <div class="flex -mx-3">
                             <div class="w-full flex items-center justify-center px-3 mb-5">
-                                    <button name="signup_submit"
-                                        class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold shadow text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
-                                        <span
-                                            class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
-                                        <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
-                                            <svg class="w-full h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                        <span class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
-                                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                        <span
-                                            class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Register now</span>
-                                    </button>
+                                <button name="signup_submit" class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold shadow text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
+                                    <span class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
+                                    <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                                        <svg class="w-full h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <span class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Register now</span>
+                                </button>
                             </div>
                         </div>
                     </form>
