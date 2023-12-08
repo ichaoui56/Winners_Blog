@@ -7,9 +7,9 @@ session_start();
 //     exit();
 // }
 
-if (isset($_POST['logout'])) {
+if (isset($_POST['logout']) && $_POST['logout'] == true) {
     session_unset();
-    session_destroy();
+    session_destroy(); 
     header('Location: ./pages/login.php');
 }
 

@@ -6,7 +6,7 @@ require("../includes/utils/fetchData.php");
 //     exit();
 // }
 
-if (isset($_POST['logout'])) {
+if (isset($_POST['logout']) && $_POST['logout'] == true) {
   session_unset();
   session_destroy();
   header('Location: ./pages/login.php');
