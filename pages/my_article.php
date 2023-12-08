@@ -16,6 +16,14 @@
 
   <!-- Navbar -->
   <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
+  <?php
+  if (isset($_SESSION["user_id"])) {
+    $userId = $_SESSION["user_id"];
+    $articles = getArticleSpecific($userId, $conn);
+  } else {
+    exit;
+  }
+  ?>
   <script src="../js/script.js"></script>
   <!-- End Navbar -->
 
@@ -34,21 +42,17 @@
   }
   ```
 -->
-  <!----------------------------------------start Countainer---------------------------------------------- -->
 
 
   <section class="bg-white mb-32 mx-10 rounded-2xl text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
-      <div class="flex flex-wrap -m-4">
+      <div class="flex flex-wrap -m-4 js-container">
         <?php
-        $articles = getArticleSpecific($userId, $conn);
         foreach ($articles as $key => $value) {
-
-
         ?>
           <div class="p-4 md:w-1/3">
 
-            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <div class="draggable h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden" draggable="true">
               <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-48 md:h-36 w-full object-cover object-center"/>';
               ?>
               <div class="p-6">
@@ -82,13 +86,7 @@
       </div>
     </div>
   </section>
-  <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-    <div>
-      <a title="Buy me a beer" href="https://www.avito.ma/" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-        <img class="object-cover object-center w-full h-full rounded-full" src="./pictures/login_pic.png" />
-      </a>
-    </div>
-  </div>
+
 
 
   <!------------------------------------------end Countainer---------------------------------------------- -->
@@ -102,6 +100,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+
+  <!-- Footer -->
+  <div id="Footer-container"></div>
+  <script src="../js/footer.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+  <script src="../js/drag_drop.js"></script>
 
   <script>
     jQuery('#waterdrop').raindrops({
