@@ -1,15 +1,5 @@
 <?php
-
-session_start();
 include("../includes/db.inc.php");
-
-// Fetch categories
-$categories = [];
-$query = "SELECT * FROM category";
-$result = mysqli_query($conn, $query);
-while ($row = mysqli_fetch_assoc($result)) {
-    $categories[] = $row;
-}
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +19,17 @@ while ($row = mysqli_fetch_assoc($result)) {
     <!------------------------------------------start navbar---------------------------------------------- -->
 
 
-    <div id="navbar-container"></div>
-    <script src="../js/navbar.js"></script>
+    <div id="navbar-container">
+        <?php include("../js/navbar.php"); ?>
+    </div>
+    <?php
+    // Fetch categories
+    $categories = [];
+    $query = "SELECT * FROM category";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $categories[] = $row;
+    } ?>
     <script src="../js/script.js"></script>
 
 
@@ -48,7 +47,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                             be careful what you share.</p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
                             <button type="button" id="add-article-btn"
                                 class="my-3 px-4 py-2 bg-blue-500 text-white rounded">Add Article</button>
             </form>

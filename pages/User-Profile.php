@@ -1,20 +1,4 @@
 <?php include("../includes/db.inc.php");
-
-require("../includes/utils/fetchData.php");
-
-session_start();
-if (isset($_SESSION["user_id"])) {
-    $userId = $_SESSION["user_id"];
-    $userInfo = getSpecificUser($userId, $conn);
-    $username = $userInfo["user_name"];
-    $usercity = $userInfo["city"];
-    $userpic = $userInfo["user_picture"];
-    $userphone = $userInfo["user_phone"];
-    $useremail = $userInfo["user_email"];
-
-
-    // $userCity = $userInfo[""]
-}
 ?>
 
 
@@ -39,7 +23,20 @@ if (isset($_SESSION["user_id"])) {
     <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
     <script src="../js/script.js"></script>
 
+    <?php include("../includes/db.inc.php");
+    if (isset($_SESSION["user_id"])) {
+        $userId = $_SESSION["user_id"];
+        $userInfo = getSpecificUser($userId, $conn);
+        $username = $userInfo["user_name"];
+        $usercity = $userInfo["city"];
+        $userpic = $userInfo["user_picture"];
+        $userphone = $userInfo["user_phone"];
+        $useremail = $userInfo["user_email"];
 
+
+        // $userCity = $userInfo[""]
+    }
+    ?>
     <!------------------------------------------end navbar---------------------------------------------- -->
 
 
