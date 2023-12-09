@@ -1,9 +1,10 @@
 <?php
 
+
 function getSpecificUser($userId, $conn)
 {
     $sql = "SELECT * FROM user WHERE id_user=?";
-    
+
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $userId);
@@ -14,7 +15,8 @@ function getSpecificUser($userId, $conn)
     return ($row);
 }
 
-function getAllUsers() {
+function getAllUsers()
+{
 
     $output = array();
     $sql = "SELECT * FROM user";
@@ -28,10 +30,12 @@ function getAllUsers() {
     return ($output);
 }
 
-function getAllArticles($conn) {
+function getAllArticles($conn)
+{
 
     $output = array();
-    $sql = "SELECT * FROM article";
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+    c.id_category, c.category FROM Article a LEFT JOIN Category c ON a.category_id = c.id_category";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
@@ -58,7 +62,8 @@ function getArticle($articleId)
     return ($output);
 }
 
-function getArticleSpecific($userId, $conn) {
+function getArticleSpecific1($userId, $conn)
+{
 
 
     $output = array();
@@ -72,7 +77,6 @@ function getArticleSpecific($userId, $conn) {
         $output[] = $row;
     }
     return ($output);
-
 }
 
 
@@ -90,4 +94,41 @@ function getcomments($articleID)
         $output[] = $row;
     }
     return ($output);
+}
+
+function getArticleSpecific($userId, $conn)
+{
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+       c.id_category, c.category
+FROM Article a
+LEFT JOIN Category c ON a.category_id = c.id_category
+WHERE a.creator_id = ?
+";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    $articles = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $articles[] = $row;
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $articles;
+}
+
+function getCommentCount($conn, $articleID)
+{
+    $sql = "SELECT * FROM comment WHERE article_id=? AND soft_delete IS NULL";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $articleID);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    $count = mysqli_num_rows($res);
+    return $count;
 }
