@@ -51,6 +51,7 @@
       <div class="flex flex-wrap -m-4 js-container">
         <?php
         foreach ($articles as $key => $value) {
+          $commentCount = getCommentCount($conn, $value["id_article"]);
         ?>
         <div class="p-4 md:w-1/3">
 
@@ -66,6 +67,7 @@
                       class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                     <span class="relative">Edit</span>
                   </a>
+
               </button>
               <button>
                 <a href="#_"
@@ -106,8 +108,9 @@
                     <path
                       d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z">
                     </path>
-                  </svg>6
+                  </svg><?php echo $commentCount; ?>
                 </span>
+
               </div>
             </div>
           </div>
