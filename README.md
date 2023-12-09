@@ -1,4 +1,7 @@
 # Avito Blog - Unveiling Tech Insights in Our Marketplace
+![Avito](https://github.com/Youcode-Classe-E-2023-2024/Winners_Blog/assets/109225791/65464cce-a00a-48ce-bcc0-cd8b827b77ae)
+
+
 
 ## Overview
 Welcome to the Avito Blog repository! As an integral part of Avito, a leading marketplace facilitating the exchange of goods and services, our blog is designed to provide a deeper understanding of the technologies driving our platform. Explore insightful articles covering emerging technologies, development best practices, market trends, and noteworthy achievements within our dynamic marketplace.
