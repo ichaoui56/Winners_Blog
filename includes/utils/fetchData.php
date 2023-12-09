@@ -1,5 +1,6 @@
 <?php
 
+
 function getSpecificUser($userId, $conn)
 {
     $sql = "SELECT * FROM user WHERE id_user=?";
@@ -58,7 +59,7 @@ function getArticle($articleId)
     return ($output);
 }
 
-function getArticleSpecific($userId, $conn) {
+function getArticleSpecific1($userId, $conn) {
 
 
     $output = array();
@@ -90,4 +91,28 @@ function getcomments($articleID)
         $output[] = $row;
     }
     return ($output);
+}
+
+function getArticleSpecific($userId, $conn) {
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+       c.id_category, c.category
+FROM Article a
+LEFT JOIN Category c ON a.category_id = c.id_category
+WHERE a.creator_id = ?
+";
+
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    $articles = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $articles[] = $row;
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $articles;
 }
