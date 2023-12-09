@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../pictures/avito.png" />
-  <title>Avito</title>
+  <title>My Articles</title>
 </head>
 
 <body class="bg-gray-300" style="background-color: #d5deef;">
@@ -52,6 +52,7 @@
         <?php
         foreach ($articles as $key => $value) {
           $commentCount = getCommentCount($conn, $value["id_article"]);
+          if (!$value["soft_delete"]) {
         ?>
         <div class="p-4 md:w-1/3">
 
@@ -115,7 +116,7 @@
             </div>
           </div>
         </div>
-        <?php } ?>
+        <?php }} ?>
       </div>
     </div>
   </section>
