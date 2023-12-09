@@ -123,7 +123,7 @@ WHERE a.creator_id = ?
 
 function getCommentCount($conn, $articleID)
 {
-    $sql = "SELECT * FROM comment WHERE article_id=?";
+    $sql = "SELECT * FROM comment WHERE article_id=? AND soft_delete IS NULL";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $articleID);
