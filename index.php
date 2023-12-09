@@ -35,6 +35,7 @@
                 <?php
                 foreach ($articles as $key => $value) {
                     $commentCount = getCommentCount($conn, $value["id_article"]);
+                    if (!$value["soft_delete"]) {
                 ?>
                     <div class="p-4 md:w-1/3">
                         <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -67,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }} ?>
             </div>
         </div>
     </section>
