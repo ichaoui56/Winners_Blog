@@ -46,7 +46,7 @@
 -->
 
 
-  <section class="bg-white mb-32 mx-10 rounded-2xl text-gray-600 body-font">
+  <section id="container" class="bg-white mb-32 mx-10 rounded-2xl text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
       <div class="flex flex-wrap -m-4 js-container">
         <?php
@@ -124,6 +124,9 @@
 
 
   <!------------------------------------------end Countainer---------------------------------------------- -->
+  <!-----------------------------  Search Results Display  ------------------------------------------------->
+  <div id="searchresult"></div>
+
 
   <!-- End Main Content -->
 
@@ -153,6 +156,48 @@
     });
   </script>
   <!-- End Footer -->
+
+  <!--------------------------------  Search script Start  --------------------------------->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+      //ws = new WebSocket('ws://127.0.0.1:5500/');
+
+      // Wait for the document to be fully loaded
+      $(document).ready(function () {
+          // When the user types in the input field with ID "live_search"
+          $("#live_search").on("input", function () {
+              // Get the value of the input
+              var input = $(this).val();
+              console.log("Input: " + input);  // Check if the input is captured
+
+              // Check if the input is not empty
+              if (input != "") {
+                  // Make an AJAX request to "search.php"
+                  $.ajax({
+                      url: "../includes/search_my_article.php",
+                      method: "POST",
+                      data: { input: input }, // Send the input data to the server
+                      success: function (data) {
+                          // When the request is successful, update the content of the element with ID "searchresult"
+                          $("#searchresult").html(data);
+                          // Hide elements with class "js-container"
+                          $("#container").css("display", "none");
+                      }
+                  });
+              } else {
+
+                  $("#searchresult").css("display", "block");
+                  $("#container").css("display", "block"); // Show all articles
+              }
+          });
+      });
+  </script>
+
+  <!--------------------------------  Search script End  --------------------------------->
+
+
 </body>
 
 </html>
