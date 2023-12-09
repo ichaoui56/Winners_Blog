@@ -62,7 +62,7 @@
               ?>
             <div class="lg:h-20 md:h-14 flex justify-center " style="backdrop-filter: blur(10px);">
               <button>
-                  <a href="#_"
+                  <a href="./modify_article.php?articleId=<?php echo $value["id_article"]; ?>"
                     class="relative rounded  px-5 py-2.5 overflow-hidden group bg-green-500 hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
                     <span
                       class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
@@ -71,7 +71,7 @@
 
               </button>
               <button>
-                <a href="#_"
+                <a href="../includes/deleteArticle.php?articleId=<?php echo $value["id_article"]; ?>"
                   class="relative rounded px-5 ml-5 py-2.5 overflow-hidden group bg-red-500 hover:bg-gradient-to-r hover:from-red-500 hover:to-red-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-red-400 transition-all ease-out duration-300">
                   <span
                     class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
