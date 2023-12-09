@@ -46,20 +46,17 @@ function getAllArticles($conn)
     return ($output);
 }
 
-function getArticle($articleId)
+function getArticle($conn, $articleId)
 {
-
-    $output = array();
-    $sql = "SELECT * FROM article WHERE id_article=?";
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+    c.id_category, c.category FROM Article a LEFT JOIN Category c ON a.category_id = c.id_category WHERE id_article=?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $articleId);
     mysqli_stmt_execute($stmt);
     $res = mysqli_stmt_get_result($stmt);
-    while ($row = mysqli_fetch_assoc($res)) {
-        $output[] = $row;
-    }
-    return ($output);
+    $row = mysqli_fetch_assoc($res);
+    return ($row);
 }
 
 function getArticleSpecific1($userId, $conn)
@@ -134,7 +131,7 @@ function getCommentCount($conn, $articleID)
 }
 
 
-function getcategory($categoryID,$conn)
+function getcategory($categoryID, $conn)
 {
 
     $output = array();
