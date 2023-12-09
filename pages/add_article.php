@@ -32,7 +32,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <div id="navbar-container"></div>
     <script src="../js/navbar.js"></script>
     <script src="../js/script.js"></script>
-    
+
 
 
     <!------------------------------------------end navbar---------------------------------------------- -->
@@ -45,18 +45,12 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so
-                            be careful
-                            what you share.</p>
+                            be careful what you share.</p>
 
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
-                <button type="button" id="add-article-btn" class="my-3 px-4 py-2 bg-blue-500 text-white rounded">Add
-                    Another Article</button>
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="submit" name="submit"
-                        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Save
-                        All Articles</button>
-                </div>
+                            <button type="button" id="add-article-btn"
+                                class="my-3 px-4 py-2 bg-blue-500 text-white rounded">Add Article</button>
             </form>
         </div>
     </main>
@@ -166,6 +160,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 </div>
                     <button type="button" class="remove-article-btn mt-3 px-4 py-2 bg-red-500 text-white rounded">Remove This Article</button>
+                    <div class="mt-6 flex items-center justify-end gap-x-6">
+                                <button type="submit" name="submit"
+                                    class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">Save All Articles</button>
+                            </div>
                     `;
                 div.querySelector('.remove-article-btn').addEventListener('click', function () {
                     this.closest('.article-fields').remove();
