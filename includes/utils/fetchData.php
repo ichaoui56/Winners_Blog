@@ -132,3 +132,20 @@ function getCommentCount($conn, $articleID)
     $count = mysqli_num_rows($res);
     return $count;
 }
+
+
+function getcategory($categoryID,$conn)
+{
+
+    $output = array();
+    $sql = "SELECT * FROM category WHERE id_category=?";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $categoryID);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    while ($row = mysqli_fetch_assoc($res)) {
+        $output[] = $row;
+    }
+    return ($output);
+}
