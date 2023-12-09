@@ -1,5 +1,5 @@
 <?php include("../includes/db.inc.php");
-    session_start();
+session_start();
 ?>
 
 
@@ -59,8 +59,8 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
     <form class="space-y-6 pt- mx-10 flex justify-center items-center  mb-20 bg-transparent" action="../includes/profile-crud/update_profile.php" method="post" enctype="multipart/form-data">
-        <div class="flex  absolute">
-            <div class="m-auto  w-[600px] ">
+        <div class="lwa3er" class="flex  absolute">
+            <div class="m-auto  w-[400px] sm:w-[450px] md:w-[600px] sm:w-[550px]  ">
                 <div>
                     <button type="button" class="relative w-full flex justify-center items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-900  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
