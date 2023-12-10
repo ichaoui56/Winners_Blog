@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Article (
     title VARCHAR(50) NOT NULL,
     description VARCHAR(500) NOT NULL,
     article_picture LONGBLOB NOT NULL,
-    article_date LONGBLOB NOT NULL,
+    article_date VARCHAR(50) NOT NULL,
     creator_id INT(6) UNSIGNED,
     soft_delete TIMESTAMP NULL DEFAULT NULL, 
     FOREIGN KEY (creator_id) REFERENCES User(id_user) ON UPDATE CASCADE ON DELETE CASCADE,
