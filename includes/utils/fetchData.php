@@ -34,8 +34,7 @@ function getAllArticles($conn)
 {
 
     $output = array();
-    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
-    c.id_category, c.category FROM Article a LEFT JOIN Category c ON a.category_id = c.id_category";
+    $sql = "SELECT * FROM article_view";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
@@ -48,8 +47,7 @@ function getAllArticles($conn)
 
 function getArticle($conn, $articleId)
 {
-    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
-    c.id_category, c.category FROM Article a LEFT JOIN Category c ON a.category_id = c.id_category WHERE id_article=?";
+    $sql = "SELECT * FROM article_view WHERE id_article=?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $articleId);
@@ -95,12 +93,7 @@ function getcomments($articleID)
 
 function getArticleSpecific($userId, $conn)
 {
-    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
-       c.id_category, c.category
-FROM Article a
-LEFT JOIN Category c ON a.category_id = c.id_category
-WHERE a.creator_id = ?
-";
+    $sql = "SELECT * FROM article_view WHERE creator_id = ?";
 
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $userId);
