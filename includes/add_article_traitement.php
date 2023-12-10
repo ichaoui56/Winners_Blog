@@ -7,10 +7,9 @@ if (isset($_POST['submit'])) {
     $article_titles = $_POST["article_title"];
     $article_descriptions = $_POST["article_description"];
     $category_ids = $_POST["article_category"];
-    $date = date("F, j, Y");
     $user_id = $_SESSION["user_id"];
 
-    $query = "INSERT INTO article (title, description, category_id, article_picture, article_date, creator_id) VALUES (?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO article (title, description, category_id, article_picture, creator_id) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
 
     for ($i = 0; $i < count($article_titles); $i++) {
@@ -25,7 +24,7 @@ if (isset($_POST['submit'])) {
         }
 
         if (mysqli_stmt_prepare($stmt, $query)) {
-            mysqli_stmt_bind_param($stmt, "ssissi", $article_title, $article_description, $category_id, $article_picture, $date, $user_id);
+            mysqli_stmt_bind_param($stmt, "ssisi", $article_title, $article_description, $category_id, $article_picture, $user_id);
             mysqli_stmt_execute($stmt);
         }
     }
