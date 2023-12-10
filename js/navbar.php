@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require("../includes/utils/fetchData.php");
 require("../includes/db.inc.php");
 
