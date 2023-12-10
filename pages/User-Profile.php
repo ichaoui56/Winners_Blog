@@ -107,7 +107,7 @@
                         </h3>
                         <div class="text-sm py-2 leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                             <i class="fas fa-phone mr-2 text-lg text-blueGray-400"></i>
-                            <?php echo $userInfo["user_phone"] ?>
+                            +212<?php echo $userInfo["user_phone"] ?>
                         </div>
                         <div class="mb-2 text-blueGray-600 mt-10">
                             <i class="fas fa-mail-bulk mr-2 text-lg text-blueGray-400"></i>
