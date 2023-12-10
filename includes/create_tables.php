@@ -167,4 +167,27 @@ if (mysqli_query($conn, $sql_create_table_password_recovery)) {
     echo "Error creating table: " . mysqli_error($conn) . " <br>";
 }
 
+// SQL to create article view
+$sql_create_article_view = "CREATE VIEW article_view AS
+SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+       c.id_category, c.category
+FROM Article a
+LEFT JOIN Category c ON a.category_id = c.id_category";
 
+// Execute the SQL query to create the view
+if (mysqli_query($conn, $sql_create_article_view)) {
+    echo "View article created successfully" . " <br>";
+} else {
+    echo "Error creating view: " . mysqli_error($conn) . " <br>";
+}
+
+// SQL to create date trigger
+$sql_create_date_trigger = "CREATE TRIGGER set_creation_date BEFORE INSERT ON article FOR EACH ROW
+SET NEW.article_date = DATE_FORMAT(NOW(), '%M %e, %Y')";
+
+// Execute the SQL query to create the trigger
+if (mysqli_query($conn, $sql_create_date_trigger)) {
+    echo "trigger created successfully" . " <br>";
+} else {
+    echo "Error creating trigger: " . mysqli_error($conn) . " <br>";
+}
