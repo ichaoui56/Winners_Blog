@@ -1,4 +1,18 @@
-<?php include("../includes/db.inc.php") ?>
+<?php 
+
+// include("../includes/db.inc.php") ;
+// if(isset($_POST["submitComment"])){
+//     $text_cmt = $_POST['text_cmt'];
+//     $date_cmt = date('Y-m-d H:i:s');
+//     $query = "INSERT INTO comment (text_cmt, date_cmt) VALUES ('$text_cmt', '$date_cmt')";
+//     if ($conn->query($query) === TRUE) {
+//         echo "<script>alert('Comment inserted successfully')</script>";
+//     } else {
+//         echo "<script>alert('?????????????????')</script>";
+
+//     }
+// }
+?>
 
 
 <!DOCTYPE html>
@@ -7,6 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
@@ -64,21 +79,20 @@
                     classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
                     datepickers.
                 </p>
-                <form class="py-2 mt-8 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+
+                <form method="post" id="commentForm" class="py-2 mt-8 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                     <label for="comment" class="sr-only">Your comment</label>
-                    <textarea id="comment" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 outline-none focus:ring-0 dark:text-white dark:placeholder-gray-400 dark:bg-gray-800" placeholder="Write a comment..." required></textarea>
-                    <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-md text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:blue-200 dark:focus:blue-700 hover:bg-primary-800">
+                    <input id="text_cmt" name="text_cmt" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 outline-none focus:ring-0 " placeholder="Write a comment..." required/>
+                    <button type="submit" name="submitComment" onclick="submitForm()" id="submitComment" class="inline-flex items-center py-2.5 px-4 text-xs font-md text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:blue-200 dark:focus:blue-700 hover:bg-primary-800">
                         Post comment
                     </button>
                 </form>
+
                 <div class="flex items-center">
                     <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Michael Gough">Michael Gough</p>
                     <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
                 </div>
-                <p class="text-white text-sm px-4 py-2">Very straight-to-point article. Really worth time reading. Thank
-                    you! But tools are just the
-                    instruments for the UX designers. The knowledge of the design tools are as important as the
-                    creation of the design strategy.</p>
+                <p class="text-white text-sm px-4 py-2 text-gray-700" id="commentDisplay"> </p>
             </article>
         </div>
     </main>
@@ -90,12 +104,13 @@
     <script src="../js/footer.js"></script>
 
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
 
     <script>
+        
+
         jQuery('#waterdrop').raindrops({
             color: '#ffffff',
             canvasHeight: 150,
@@ -104,7 +119,25 @@
         });
     </script>
 
+    <script>
+        function submitForm() {
+    var formData = $("#commentForm").serialize();
+
+    $.ajax({
+        type: "POST",
+        url: "articleInsert.php",
+        data: formData,
+        success: function(response) {
+            $("#result").html(response);
+        }
+    });
+
+    $("#commentForm").submit(function(e) {
+        e.preventDefault();
+    });
+}
+    </script>
     <!------------------------------------------ end footer --------------------------------------------------------->
 </body>
 
-</html>
+</html> 
