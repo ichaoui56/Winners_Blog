@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     mysqli_stmt_bind_param($stmt, "s", $article_picture);
     mysqli_stmt_execute($stmt);
 
-    header('Location: ../pages/add_article.php?article=added');
+    header('Location: ../pages/my_article.php?article=added');
 
 }
 
