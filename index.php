@@ -38,8 +38,8 @@
                     if (!$value["soft_delete"]) {
                 ?>
                     <div class="p-4 md:w-1/3">
-                        <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                            <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-48 md:h-36 w-full object-cover object-center"/>'; ?>
+                        <div class="h-[550px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                            <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-[390px] md:h-36 w-full object-cover object-center"/>'; ?>
                             <div class="p-6">
                                 <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"><?php echo $value["category"]; ?></h2>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3"><?php echo $value["title"]; ?></h1>

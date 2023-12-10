@@ -33,8 +33,6 @@
         $userphone = $userInfo["user_phone"];
         $useremail = $userInfo["user_email"];
 
-
-        // $userCity = $userInfo[""]
     }
     ?>
     <!------------------------------------------end navbar---------------------------------------------- -->
