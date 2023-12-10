@@ -31,7 +31,4 @@ if (isset($_POST['submit'])) {
     }
 
     header('Location: ../pages/my_article.php?article=added');
-
 }
-
-?>
