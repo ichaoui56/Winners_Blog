@@ -19,32 +19,28 @@ containers.forEach((container) => {
 
     if (afterElement == null) {
       container.appendChild(draggable);
-    } else {
+    } else if (container.contains(afterElement)) {
       container.insertBefore(draggable, afterElement);
     }
   });
 });
 
 function getDragAfterElement(container, x, y) {
-  const draggableElements = [
-    ...container.querySelectorAll(".draggable:not(.dragging)"),
-  ];
+  const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
 
-  return draggableElements.reduce(
-    (closest, child) => {
-      const box = child.getBoundingClientRect();
-      const offsetVertical = y - box.top - box.height / 2;
-      const offsetHorizontal = x - box.left - box.width / 2;
-      const offsetMagnitude = Math.sqrt(
-        offsetVertical ** 2 + offsetHorizontal ** 2
-      );
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offsetVertical = y - (box.top + window.scrollY);
+    const offsetHorizontal = x - (box.left + window.scrollX);
+    const offsetMagnitude = Math.sqrt(offsetVertical ** 2 + offsetHorizontal ** 2);
 
-      if (offsetMagnitude < closest.offset) {
-        return { offset: offsetMagnitude, element: child };
-      } else {
-        return closest;
-      }
-    },
-    { offset: Number.POSITIVE_INFINITY }
-  ).element;
+    if (offsetMagnitude < closest.offset) {
+      return { offset: offsetMagnitude, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.POSITIVE_INFINITY }).element;
 }
+
+
+
