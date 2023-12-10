@@ -123,6 +123,30 @@ function getCommentCount($conn, $articleID)
     return $count;
 }
 
+function getuserCommentCount($conn, $userID)
+{
+    $sql = "SELECT * FROM comment WHERE creator_id=? AND soft_delete IS NULL";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userID);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    $count = mysqli_num_rows($res);
+    return $count;
+}
+
+function getuserArticleCount($conn, $userID)
+{
+    $sql = "SELECT * FROM article WHERE creator_id=? AND soft_delete IS NULL";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userID);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    $count = mysqli_num_rows($res);
+    return $count;
+}
+
 
 function getcategory($categoryID, $conn)
 {

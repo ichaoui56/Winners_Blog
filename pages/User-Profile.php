@@ -32,7 +32,8 @@
         $userpic = $userInfo["user_picture"];
         $userphone = $userInfo["user_phone"];
         $useremail = $userInfo["user_email"];
-
+        $commentCount = getuserCommentCount($conn, $userId);
+        $articleCount = getuserArticleCount($conn, $userId);
     }
     ?>
     <!------------------------------------------end navbar---------------------------------------------- -->
@@ -67,13 +68,13 @@
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        10
+                                    <?= $articleCount ?>
                                     </span>
                                     <span class="text-sm text-blueGray-400">Annonces</span>
                                 </div>
                                 <div class="lg:mr-4 p-3 text-center">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                        89
+                                    <?= $commentCount ?>
                                     </span>
                                     <span class="text-sm text-blueGray-400">Comments</span>
                                 </div>
