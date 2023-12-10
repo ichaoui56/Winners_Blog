@@ -1,18 +1,60 @@
-<?php 
+<?php
 
-// include("../includes/db.inc.php") ;
-// if(isset($_POST["submitComment"])){
-//     $text_cmt = $_POST['text_cmt'];
-//     $date_cmt = date('Y-m-d H:i:s');
-//     $query = "INSERT INTO comment (text_cmt, date_cmt) VALUES ('$text_cmt', '$date_cmt')";
-//     if ($conn->query($query) === TRUE) {
-//         echo "<script>alert('Comment inserted successfully')</script>";
-//     } else {
-//         echo "<script>alert('?????????????????')</script>";
+include("../includes/db.inc.php");
 
-//     }
-// }
-?>
+
+
+function getArticleUser($articleId, $conn)
+{
+    $output = array();
+    $sql = "SELECT
+                Article.*,
+                User.id_user,
+                User.user_name,
+                User.user_phone,
+                User.user_email,
+                User.user_picture,
+                User.city,
+                User.password,
+                User.soft_delete AS user_soft_delete
+            FROM
+                Article
+            JOIN
+                User ON Article.creator_id = User.id_user
+            WHERE
+                Article.id_article=?";
+
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $articleId);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+
+    while ($row = mysqli_fetch_assoc($res)) {
+        $output[] = $row;
+    }
+
+    return $output;
+}
+
+
+
+// Retrieve the article ID from the URL
+$articleId = isset($_GET['id']) ? $_GET['id'] : null;
+
+
+
+
+// Check if the ID is valid
+if ($articleId) {
+// Fetch the article based on the ID
+$user=getArticleUser($articleId,$conn);
+
+//var_dump($user);
+
+// Check if the article exists
+if (!empty($user)) { ?>
+
 
 
 <!DOCTYPE html>
@@ -51,34 +93,32 @@
             <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                 <header class="mb-4 lg:mb-6 not-format">
                     <address class="flex items-center mb-6 not-italic">
-                        <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                            <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese Leos">
+          <?php foreach ($user as $singleUser) : ?>
+
+        <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+            <?=  '<img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" >'; ?>
+
                             <div>
-                                <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">Jese
-                                    Leos</a>
-                                <p class="text-base text-gray-500 dark:text-gray-400">Graphic Designer, educator & CEO
-                                    Flowbite</p>
-                                <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">
+                                    <?= $singleUser["user_name"]; ?>
+                                </a>
+                                <p class="text-base text-gray-500 dark:text-gray-400">
+                                    <?= $singleUser["article_date"]; ?>
+                                </p>
                             </div>
                         </div>
                     </address>
+
+
                     <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
-                        Best practices for successful prototypes</h1>
+                        <?= $singleUser['title'] ?></h1>
+
                 </header>
-                <img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
+                <?=  '<img src="data:image/png;base64,' . base64_encode($singleUser["article_picture"]) . '" alt="blog" style="filter: invert(0);">'; ?>
                 <p class="lead text-[#9CA3A2]">
-                    Flowbite is an open-source library of UI components built with the utility-first
-                    classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                    datepickersFlowbite is an open-source library of UI components built with the utility-first
-                    classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                    datepickersFlowbite is an open-source library of UI components built with the utility-first
-                    classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                    datepickersFlowbite is an open-source library of UI components built with the utility-first
-                    classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                    datepickersFlowbite is an open-source library of UI components built with the utility-first
-                    classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                    datepickers.
+                    <?php echo $singleUser["description"]; ?>
                 </p>
+                <?php endforeach; ?>
 
                 <form method="post" id="commentForm" class="py-2 mt-8 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                     <label for="comment" class="sr-only">Your comment</label>
@@ -109,7 +149,7 @@
     <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
 
     <script>
-        
+
 
         jQuery('#waterdrop').raindrops({
             color: '#ffffff',
@@ -140,4 +180,13 @@
     <!------------------------------------------ end footer --------------------------------------------------------->
 </body>
 
-</html> 
+</html>
+    <?php
+} else {
+    // Handle the case where the article does not exist
+    echo "Article not found";
+}
+} else {
+    // Handle the case where the ID is not provided
+    echo "Invalid article ID";
+}
