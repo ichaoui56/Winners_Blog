@@ -167,6 +167,7 @@ session_start();
           $commentCount = getCommentCount($conn, $value["id_article"]);
           if (!$value["soft_delete"]) {
         ?>
+
             <div class="p-4 md:w-1/3">
               <div class="h-[640px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-[390px] md:h-36 w-full object-cover object-center"/>'; ?>
@@ -209,6 +210,7 @@ session_start();
                   </button>
 
 
+
                 </div>
               </div>
             </div>
@@ -242,7 +244,6 @@ session_start();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
-  <script src="../js/drag_drop.js"></script>
 
   <script>
     jQuery('#waterdrop').raindrops({
@@ -294,7 +295,7 @@ session_start();
 
   <!--------------------------------  Search script End  --------------------------------->
 
-
+  <script src="../js/drag_drop.js"></script>
 </body>
 
 </html>
