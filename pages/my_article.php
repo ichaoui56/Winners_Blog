@@ -168,7 +168,7 @@ session_start();
           if (!$value["soft_delete"]) {
         ?>
 
-            <div class="p-4 md:w-1/3">
+            <div class="p-4 md:w-1/3 draggable" draggable="true">
               <div class="h-[640px] border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <?php echo '<img src="data:image/png;base64,' . base64_encode($value["article_picture"]) . '" alt="blog" style="filter: invert(0);" class="lg:h-[390px] md:h-36 w-full object-cover object-center"/>'; ?>
                 <div class="p-6">
