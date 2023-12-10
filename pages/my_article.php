@@ -1,5 +1,4 @@
 <?php include("../includes/db.inc.php");
-session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

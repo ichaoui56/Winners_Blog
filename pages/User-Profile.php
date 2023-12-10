@@ -23,7 +23,7 @@
     <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
     <script src="../js/script.js"></script>
 
-    <?php include("../includes/db.inc.php");
+    <?php
     if (isset($_SESSION["user_id"])) {
         $userId = $_SESSION["user_id"];
         $userInfo = getSpecificUser($userId, $conn);
