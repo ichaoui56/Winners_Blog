@@ -216,7 +216,7 @@ include("../includes/db.inc.php");
                             <div class="flex-initial pl-3">
                                 <div class="btn-conteiner">
                                     <button type="submit" name="submit">
-                                        <a class="btn-content" href="#">
+                                        <a class="btn-content">
                                             <span class="btn-title">SAVE</span>
                                             <span class="icon-arrow">
                                                 <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg"
