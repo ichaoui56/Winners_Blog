@@ -1,7 +1,6 @@
 <?php 
 session_start();
 require("../includes/utils/fetchData.php");
-require("../includes/db.inc.php");
 
 if (isset($_SESSION["user_id"])) {
     $userId = $_SESSION["user_id"];
