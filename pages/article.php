@@ -199,11 +199,8 @@ if ($articleId) {
                                 // Iterate through comments and append them to the comment section
                                 comments.forEach(function(comment) {
                                     console.log(comment);
-                                    <?php $user = getSpecificUser($userId, $conn); ?>
-                                    var user = "<?php echo $user["user_name"]; ?>";
                                     var htmlTemplate = `
                             <div class='flex items-center'>
-                                <h1 class='text-md px-4 py-2 text-black font-medium' > ${user} </h1>
                                 <p class='text-white text-sm px-4 py-2 text-gray-700' > ${comment.text_cmt} </p>
                                 <p class='text-sm text-gray-600 dark:text-gray-400'>
                                     <time pubdate datetime='${comment.date_cmt}' title='${comment.date_cmt}'>${comment.date_cmt}</time>
