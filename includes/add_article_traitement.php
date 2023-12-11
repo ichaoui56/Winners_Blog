@@ -29,5 +29,5 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    header('Location: ../pages/my_article.php?article=added');
+    header('Location: ../pages/my_article.php?artile=added');
 }
