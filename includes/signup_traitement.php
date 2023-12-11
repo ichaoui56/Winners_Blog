@@ -41,7 +41,7 @@ if (isset($_POST["signup_submit"])) {
     $res = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($res)) {
         if (!$row["soft_delete"]) {
-            header("Location: ../pages/login.php?user=alreadyExist");
+             header("Location: ../pages/register.php?userRegister=alreadyExist");
             exit;
         } else {
             $userId = $row["id_user"];

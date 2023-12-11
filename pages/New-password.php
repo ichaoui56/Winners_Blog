@@ -35,7 +35,8 @@ if (isset($_SESSION["login"])) {
     if (isset($_GET["selector"], $_GET["validator"])) {
         $selector = $_GET["selector"];
         $validator = $_GET["validator"];
-    } if (empty($selector) || empty($validator)) {
+    }
+    if (empty($selector) || empty($validator)) {
         echo "Could not validate your request";
     } else {
         if (ctype_xdigit($selector) && ctype_xdigit($selector)) {

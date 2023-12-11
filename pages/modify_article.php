@@ -43,7 +43,7 @@ include("../includes/db.inc.php");
     <main class="flex items-center justify-center min-h-screen">
         <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl w-full">
             <form method="POST" action="../includes/modify_article_traitement.php" enctype="multipart/form-data">
-                <input type="hidden" name="articleID" value="<?php echo $articleId;?>">
+                <input type="hidden" name="articleID" value="<?php echo $articleId; ?>">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
@@ -66,7 +66,7 @@ include("../includes/db.inc.php");
                                             </label>
                                         </div>
                                         <input type="file" accept="image/*" name="article_picture">
-                                        <?php $_SESSION["article_picture"] = $article["article_picture"];?>
+                                        <?php $_SESSION["article_picture"] = $article["article_picture"]; ?>
                                         <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF</p>
                                     </div>
                                 </div>

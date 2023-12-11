@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Admin</title>
     <link rel="icon" type="image/png" href="../pictures/2.png" />

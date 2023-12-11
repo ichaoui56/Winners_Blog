@@ -10,6 +10,8 @@ if (isset($_SESSION["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
@@ -34,7 +36,7 @@ if (isset($_SESSION["login"])) {
 
 
     <div class="flex mb-32  items-center justify-center h-screen">
-        <!-- <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt=""> -->
+        <!--- <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt=""> --->
         <div class="ilyas w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300" class="relative w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300">
             <h1 class="text-4xl font-medium">Reset password</h1>
             <p class="text-slate-500">Fill up the form to reset the password</p>
@@ -85,6 +87,15 @@ if (isset($_SESSION["login"])) {
             density: 0.1,
             frequency: 20
         });
+        <?php
+        if (isset($_GET["user"])) { ?>
+            Swal.fire({
+                icon: "error",
+                title: "User not found",
+                text: "Please change your email !",
+            });
+        <?php } ?>
+        
     </script>
 
     <!----------------------------- end footer ------------------------------------->
