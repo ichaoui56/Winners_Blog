@@ -4,7 +4,7 @@ session_start();
 $db_server = "sql206.infinityfree.com";
 $db_user = "if0_35553201";
 $db_pass = "jS4FFzcVvx";
-$db_name = "if0_35553201_BlogDB";
+$db_name = "if0_35553201_blog";
 $conn = "";
 
 // Create connection & check connection
@@ -14,7 +14,7 @@ try {
     echo "Not connected: ";
 }
 // Create Database
-$sql_create_db = "CREATE DATABASE IF NOT EXISTS Blog";
+$sql_create_db = "CREATE DATABASE IF NOT EXISTS blog";
 $req=mysqli_query($conn, $sql_create_db);
 
 // Check if the database is created
