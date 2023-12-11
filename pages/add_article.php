@@ -1,5 +1,8 @@
 <?php
 include("../includes/db.inc.php");
+if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
