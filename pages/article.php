@@ -20,7 +20,7 @@ function getArticleUser($articleId, $conn)
             FROM
                 Article
             JOIN
-                User ON Article.creator_id = User.id_user
+                User ON article.creator_id = User.id_user
             WHERE
                 Article.id_article=?";
 
