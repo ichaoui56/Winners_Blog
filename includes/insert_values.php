@@ -24,8 +24,7 @@ if ($req_category) {
 
 
 // insert roles into role table
-$sql_role_values = "
-INSERT INTO ROLE (role_title) VALUES 
+$sql_role_values = "INSERT IGNORE INTO ROLE (role_title) VALUES 
 ('Admin'),
 ('Annoncer'),
 ('Viewer')";
@@ -50,3 +49,14 @@ if (!$req_permissions) {
 } else {
     echo "Permissions inserted successfully." . "<br>";
 }
+
+$hashedPassword = password_hash("admin", PASSWORD_DEFAULT);
+
+$sql_admin = "INSERT INTO user (user_name, user_email, password, user_phone, user_picture, city) VALUES ('admin', 'admin', '$hashedPassword', 000, 'sat', 'rabat')";
+
+$req_admin = mysqli_query($conn, $sql_admin);
+
+if (!$req_admin) {
+    echo "Error: " . mysqli_error($conn) . "<br>";
+} else {
+    echo "admin credentials inserted successfully." . "<br>";}

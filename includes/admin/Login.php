@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <title>Admin</title>
     <link rel="icon" type="image/png" href="../pictures/2.png" />
@@ -15,11 +13,11 @@
 <body>
     <div class="loginBox"> <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
         <h3>HELLO ADMIN </h3>
-        <form action="" method="">
+        <form action="./login_traitement.php" method="post">
             <div class="inputBox">
-                <input id="uname" type="text" name="Username" autocomplete="off" placeholder="Username">
-                <input id="pass" type="password" name="Password" autocomplete="off" placeholder="Password">
-                <button class="button"> Login
+                <input id="uname" type="text" name="username" autocomplete="off" placeholder="Username">
+                <input id="pass" type="password" name="password" autocomplete="off" placeholder="Password">
+                <button name="admin_submit" class="button"> Login
                 </button>
         </form>
     </div>
