@@ -13,224 +13,11 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
+    <link rel="stylesheet" href="../css/Button.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Avito</title>
 </head>
 
-<style>
-    .btn-conteiner {
-        display: flex;
-        justify-content: center;
-        --color-text: #ffffff;
-        --color-background: #000000;
-        --color-outline: #6a606380;
-        --color-shadow: #00000080;
-    }
-
-    .btn-content {
-        display: flex;
-        align-items: center;
-        padding: 5px 20px;
-        text-decoration: none;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 25px;
-        color: var(--color-text);
-        background: var(--color-background);
-        transition: 1s;
-        border-radius: 100px;
-        box-shadow: 0 0 0.2em 0 var(--color-background);
-    }
-
-    .btn-content:hover,
-    .btn-content:focus {
-        transition: 0.5s;
-        -webkit-animation: btn-content 1s;
-        animation: btn-content 1s;
-        outline: 0.1em solid transparent;
-        outline-offset: 0.2em;
-        box-shadow: 0 0 0.4em 0 var(--color-background);
-    }
-
-    .btn-content .icon-arrow {
-        transition: 0.5s;
-        margin-right: 0px;
-        transform: scale(0.6);
-    }
-
-    .btn-content:hover .icon-arrow {
-        transition: 0.5s;
-        margin-right: 25px;
-    }
-
-    .icon-arrow {
-        width: 10px;
-        margin-left: 15px;
-        position: relative;
-        top: 6%;
-    }
-
-    /* SVG */
-    #arrow-icon-one {
-        transition: 0.4s;
-        transform: translateX(-60%);
-    }
-
-    #arrow-icon-two {
-        transition: 0.5s;
-        transform: translateX(-30%);
-    }
-
-    .btn-content:hover #arrow-icon-three {
-        animation: color_anim 1s infinite 0.2s;
-    }
-
-    .btn-content:hover #arrow-icon-one {
-        transform: translateX(0%);
-        animation: color_anim 1s infinite 0.6s;
-    }
-
-    .btn-content:hover #arrow-icon-two {
-        transform: translateX(0%);
-        animation: color_anim 1s infinite 0.4s;
-    }
-
-    @keyframes color_anim {
-        0% {
-            fill: white;
-        }
-
-        50% {
-            fill: var(--color-background);
-        }
-
-        100% {
-            fill: white;
-        }
-    }
-
-    @-webkit-keyframes btn-content {
-        0% {
-            outline: 0.2em solid var(--color-background);
-            outline-offset: 0;
-        }
-    }
-
-    @keyframes btn-content {
-        0% {
-            outline: 0.2em solid var(--color-background);
-            outline-offset: 0;
-        }
-    }
-
-    /* save all items button */
-    .button {
-        font-family: inherit;
-        font-size: 20px;
-        background: #212121;
-        color: rgb(0, 0, 0);
-        fill: rgb(0, 0, 0);
-        padding: 0.7em 1em;
-        padding-left: 0.9em;
-        display: flex;
-        align-items: center;
-        border: 2 solid black;
-        border-radius: 15px;
-        font-weight: 1000;
-    }
-
-    .button span {
-        display: block;
-        margin-left: 0.3em;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .button svg {
-        display: block;
-        transform-origin: center center;
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .button:hover {
-        background: #000;
-    }
-
-    .button:hover .svg-wrapper {
-        transform: scale(1.25);
-        transition: .5s linear;
-    }
-
-    .button:hover svg {
-        transform: translateX(3em) scale(1.1);
-        fill: #fff;
-    }
-
-    .button:hover span {
-        opacity: 0;
-        transition: .5s linear;
-    }
-
-    .button:active {
-        transform: scale(0.95);
-    }
-
-    /* button add article  */
-    .cssbuttons-io-button {
-        background: rgb(93, 63, 225);
-        margin-left: 120px;
-        width: 300px;
-        color: white;
-        font-family: inherit;
-        padding: 0.35em;
-        padding-left: 1.2em;
-        font-size: 17px;
-        font-weight: 500;
-        border-radius: 0.9em;
-        border: none;
-        letter-spacing: 0.05em;
-        display: flex;
-        align-items: center;
-        box-shadow: inset 0 0 1.6em -0.6em #714da6;
-        overflow: hidden;
-        position: relative;
-        height: 2.8em;
-        padding-right: 3.3em;
-        cursor: pointer;
-    }
-
-    .cssbuttons-io-button .icon {
-        background: white;
-        margin-left: 1em;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 2.2em;
-        width: 2.2em;
-        border-radius: 0.7em;
-        box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
-        right: 0.3em;
-        transition: all 0.3s;
-    }
-
-    .cssbuttons-io-button:hover .icon {
-        width: calc(100% - 0.6em);
-    }
-
-    .cssbuttons-io-button .icon svg {
-        width: 1.1em;
-        transition: transform 0.3s;
-        color: #7b52b9;
-    }
-
-    .cssbuttons-io-button:hover .icon svg {
-        transform: translateX(0.1em);
-    }
-
-    .cssbuttons-io-button:active .icon {
-        transform: scale(0.95);
-    }
-</style>
 
 <body class="bg-gray-300 " style="background-color: #d5deef;">
 
@@ -260,41 +47,49 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
 
     <div class="space-y-6 flex justify-center items-center  mb-20 bg-transparent">
         <div id="articles-container">
-            <div
-                class="w-[600px] h-64 duration-500 group overflow-hidden relative rounded bg-neutral-800 text-neutral-50 p-4 flex flex-col justify-evenly">
+            <div class=" flex justify-center justify-items-center ">
                 <div
-                    class="absolute blur duration-500 group-hover:blur-none w-72 h-72 rounded-full group-hover:translate-x-12 group-hover:translate-y-12 bg-sky-900 right-1 -bottom-24">
-                </div>
-                <div
-                    class="absolute blur duration-500 group-hover:blur-none w-12 h-12 rounded-full group-hover:translate-x-12 group-hover:translate-y-2 bg-indigo-700 right-12 bottom-12">
-                </div>
-                <div
-                    class="absolute blur duration-500 group-hover:blur-none w-36 h-36 rounded-full group-hover:translate-x-12 group-hover:-translate-y-12 bg-indigo-800 right-1 -top-12">
-                </div>
-                <div
-                    class="absolute blur duration-500 group-hover:blur-none w-24 h-24 bg-sky-700 rounded-full group-hover:-translate-x-12">
-                </div>
-                <div class="z-10 flex flex-col justify-evenly w-full h-full">
-                    <span class="text-2xl font-bold">Text title</span>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat
-                        felis nec rutrum vulputate. Morbi ut lobortis enim. Nam nec elit nibh.
-                    </p>
-                    <button class="cssbuttons-io-button" onclick="ShowModalForm()">
-                        Add Article
-                        <div class="icon">
-                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                <path
-                                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
-                    </button>
+                    class="w-[600px] h-[300px] top-[300px] duration-500 group overflow-hidden absolute  rounded bg-neutral-800 text-neutral-50 p-4 flex flex-col justify-evenly">
+                    <div
+                        class="absolute blur duration-500 group-hover:blur-none w-72 h-72 rounded-full group-hover:translate-x-12 group-hover:translate-y-12 bg-sky-900 right-1 -bottom-24">
+                    </div>
+                    <div
+                        class="absolute blur duration-500 group-hover:blur-none w-12 h-12 rounded-full group-hover:translate-x-12 group-hover:translate-y-2 bg-indigo-700 right-12 bottom-12">
+                    </div>
+                    <div
+                        class="absolute blur duration-500 group-hover:blur-none w-36 h-36 rounded-full group-hover:translate-x-12 group-hover:-translate-y-12 bg-indigo-800 right-1 -top-12">
+                    </div>
+                    <div
+                        class="absolute blur duration-500 group-hover:blur-none w-24 h-24 bg-sky-700 rounded-full group-hover:-translate-x-12">
+                    </div>
+                    <div class="z-10 flex flex-col justify-evenly w-full h-full">
+                        <span class="text-2xl font-bold">Avito articles</span>
+                        <p>
 
+                            Welcome to Avito's "Add Article" page - effortlessly showcase your items with high-quality
+                            images and engaging descriptions. Set your preferred prices and reach a diverse audience,
+                            making
+                            selling simple and effective. Use Avito's intuitive platform for a seamless selling
+                            experience.
+                        </p>
+                        <button class="cssbuttons-io-button" onclick="ShowModalForm()">
+                            Add Article
+                            <div class="icon">
+                                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                        fill="currentColor"></path>
+                                </svg>
+                            </div>
+                        </button>
+
+                    </div>
                 </div>
+                <img src="../pictures/profile-bg.jpg" alt="" width="100%" class="" class="rounded-3xl">
             </div>
         </div>
+
     </div>
 
     <div id="multipeForms" class=" bg-black/25 z-20 fixed hidden items-center justify-center  top-0  h-screen w-full">
@@ -379,53 +174,50 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
 
                                     </div>
 
-                                    <hr class="mt-4">
-                                    <div class="flex flex-row-reverse p-3">
-                                        <div class="flex-initial pl-3">
-                                            <div class="btn-conteiner">
-                                                <a onclick="addNewForm()" class="btn-content cursor-pointer">
-                                                    <span class="btn-title">Add article</span>
-                                                    <span class="icon-arrow">
-                                                        <svg width="66px" height="43px" viewBox="0 0 66 43"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                            <g id="arrow" stroke="none" stroke-width="1" fill="none"
-                                                                fill-rule="evenodd">
-                                                                <path id="arrow-icon-one"
-                                                                    d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                                <path id="arrow-icon-two"
-                                                                    d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                                <path id="arrow-icon-three"
-                                                                    d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <button class="button" type="submit" name="submit" class="flex z-96 flex-row justify-between">
-                    <div class="svg-wrapper-1">
-                        <div class="svg-wrapper">
-                            <svg class="icon" height="30" width="30" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M22,15.04C22,17.23 20.24,19 18.07,19H5.93C3.76,19 2,17.23 2,15.04C2,13.07 3.43,11.44 5.31,11.14C5.28,11 5.27,10.86 5.27,10.71C5.27,9.33 6.38,8.2 7.76,8.2C8.37,8.2 8.94,8.43 9.37,8.8C10.14,7.05 11.13,5.44 13.91,5.44C17.28,5.44 18.87,8.06 18.87,10.83C18.87,10.94 18.87,11.06 18.86,11.17C20.65,11.54 22,13.13 22,15.04Z">
-                                </path>
-                            </svg>
+                <div class="flex flex-row">
+
+                    <button class="button1" type="submit" name="submit" class="flex z-96 flex-row justify-between">
+                        <div class="svg-wrapper-1">
+                            <div class="svg-wrapper">
+                                <svg class="icon" height="30" width="30" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M22,15.04C22,17.23 20.24,19 18.07,19H5.93C3.76,19 2,17.23 2,15.04C2,13.07 3.43,11.44 5.31,11.14C5.28,11 5.27,10.86 5.27,10.71C5.27,9.33 6.38,8.2 7.76,8.2C8.37,8.2 8.94,8.43 9.37,8.8C10.14,7.05 11.13,5.44 13.91,5.44C17.28,5.44 18.87,8.06 18.87,10.83C18.87,10.94 18.87,11.06 18.86,11.17C20.65,11.54 22,13.13 22,15.04Z">
+                                    </path>
+                                </svg>
+                            </div>
                         </div>
+                        <span>Save all items</span>
+                    </button>
+                    <div class="btn-conteiner">
+                        <a onclick="addNewForm()" class="btn-content cursor-pointer">
+                            <span class="btn-title">Add article</span>
+                            <span class="icon-arrow">
+                                <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <path id="arrow-icon-one"
+                                            d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                            fill="#FFFFFF"></path>
+                                        <path id="arrow-icon-two"
+                                            d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                            fill="#FFFFFF"></path>
+                                        <path id="arrow-icon-three"
+                                            d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                            fill="#FFFFFF"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
                     </div>
-                    <span>Save all items</span>
-                </button>
+                </div>
             </form>
         </div>
 
@@ -455,10 +247,12 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
     </script>
     <script>
         let container = document.getElementById("multipeForms");
+        let i = 0;
+        let par = document.getElementById("Parent_form");
 
-
-        let form = `
-       <div  class="flex ">
+        function addNewForm() {
+            let form = `
+        <div class="flex form">
             <div class="m-auto  w-[400px] sm:w-[450px] md:w-[600px] sm:w-[550px] ">
                 <div>
                     <button type="button"
@@ -518,64 +312,50 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
                                 class=" text-black placeholder-gray-600 w-full h-[150px] px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
 
                         </div>
-
-                        <hr class="mt-4">
-                        <div class="flex flex-row-reverse p-3">
-                            <div class="flex-initial pl-3">
-                                <div class="btn-conteiner">
-                                                <a onclick="addNewForm()" class="btn-content cursor-pointer">
-                                                    <span class="btn-title">Add article</span>
-                                                    <span class="icon-arrow">
-                                                        <svg width="66px" height="43px" viewBox="0 0 66 43"
-                                                            version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                            <g id="arrow" stroke="none" stroke-width="1" fill="none"
-                                                                fill-rule="evenodd">
-                                                                <path id="arrow-icon-one"
-                                                                    d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                                <path id="arrow-icon-two"
-                                                                    d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                                <path id="arrow-icon-three"
-                                                                    d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
-                                                                    fill="#FFFFFF"></path>
-                                                            </g>
-                                                        </svg>
-                                                    </span>
-                                                </a>
-                                            </div>
-                            </div>
+<div class="flex flex-row-reverse p-3">
+                        <div class="flex-initial pl-3">
+                            <a class="button remove-article-btn">
+                                <svg viewBox="0 0 448 512" class="svgIcon">
+                                    <path
+                                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                                    </path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
+                        
                 </div>
             </div>
         </div>
     
     `
+            par.innerHTML += form;
+                    let removeButtons = document.querySelectorAll('.remove-article-btn');
+                    removeButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            this.closest('.form').remove();
+                        });
+                    });
+                }
 
-        function addNewForm() {
+                function ShowModalForm() {
+                    if (container.classList.contains("hidden")) {
+                        container.classList.replace("hidden", "flex");
+                    } else if (container.classList.contains("flex")) {
+                        container.classList.replace("flex", "hidden");
+                    }
+                }
 
-            document.getElementById("Parent_form").insertAdjacentHTML('afterend', form);
+                // Add event listener for existing remove buttons
+                let removeButtons = document.querySelectorAll('.remove-article-btn');
+                removeButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        this.closest('.form').remove();
+                    });
+                });
 
-
-        }
-
-        function ShowModalForm() {
-
-
-            if (container.classList.contains("hidden")) {
-
-                container.classList.replace("hidden", "flex");
-
-            } else if (container.classList.contains("flex")) {
-                container.classList.replace("flex", "hidden");
-
-            }
-
-
-        }
     </script>
+
 
 
     <!----------------------------- end footer ------------------------------------->
