@@ -35,7 +35,7 @@ function getArticle($conn, $articleId)
     $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
     c.id_category, c.category
 FROM article a
-LEFT JOIN Category c ON a.category_id = c.id_category WHERE id_article=?";
+LEFT JOIN category c ON a.category_id = c.id_category WHERE id_article=?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $articleId);
@@ -66,7 +66,7 @@ function getArticleSpecific($userId, $conn)
     $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
     c.id_category, c.category
 FROM article a
-LEFT JOIN Category c ON a.category_id = c.id_category WHERE creator_id = ? GROUP BY id_article DESC";
+LEFT JOIN category c ON a.category_id = c.id_category WHERE creator_id = ? GROUP BY id_article DESC";
 
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $userId);
