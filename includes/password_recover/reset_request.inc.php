@@ -18,13 +18,13 @@ if (isset($_POST["reset-request-submit"])) {
     // Random 32 binary bytes
     $token = random_bytes(32);
     $expiresDate = date("U") + 3600;
-    $url = "http://localhost/winners_blog/pages/New-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "http://avitoblog.000.pe/pages/New-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
     if (empty($email)) {
         echo "email is empty";
     }
 
-    $sql = "SELECT * FROM user WHERE user_email=?";
+    $sql = "SELECT * FROM user WHERE user_email=? AND soft_delete IS NULL";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -47,7 +47,7 @@ if (isset($_POST["reset-request-submit"])) {
                 mysqli_stmt_execute($stmt);
             }
         } else {
-            echo "the user isnt found";
+            header("Location: ../../pages/Reset_password.php?user=notFound");
             exit;
         }
         // $email = $row["email"];
@@ -60,11 +60,39 @@ if (isset($_POST["reset-request-submit"])) {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
+        $username = $row["user_name"];
         $to = $email;
         $subject = "Reset Your Password!";
-        $message = "<p>Click on The link below if you are the one trying to change your password,<br>if not you just ignore this mail and don share the link below.</p>
-        <p>Here is your Password link: <br>";
-        $message .= "<a href='$url'>$url</a></p>";
+        $message = "
+        <html>
+        <head>
+          <title>Password Recovery</title>
+        </head>
+        <body>
+          <p>Hello, '$username'</p>
+          <p>Click on the button below if you are the one trying to change your password. If not, please ignore this email and do not share the link.</p>
+          
+          <a href='$url' style='
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;'>
+            Reset Password
+          </a>
+        
+          <p>If you're having trouble clicking the button, you can also copy and paste the following URL into your browser:</p>
+          <p><a href='$url'>$url</a></p>
+        
+          <p>Thank you!</p>
+        </body>
+        </html>
+        ";
 
         $mail = new PHPMailer(true);
 
