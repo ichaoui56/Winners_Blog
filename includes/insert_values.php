@@ -52,7 +52,7 @@ if (!$req_permissions) {
 
 $hashedPassword = password_hash("admin", PASSWORD_DEFAULT);
 
-$sql_admin = "INSERT INTO user (user_name, user_email, password) VALUES ('admin', 'admin', '$hashedPassword')";
+$sql_admin = "INSERT INTO user (user_name, user_email, password, user_phone, user_picture, city) VALUES ('admin', 'admin', '$hashedPassword', 000, 'sat', 'rabat')";
 
 $req_admin = mysqli_query($conn, $sql_admin);
 
