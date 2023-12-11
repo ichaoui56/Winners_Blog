@@ -8,21 +8,21 @@ function getArticleUser($articleId, $conn)
 {
     $output = array();
     $sql = "SELECT
-                Article.*,
-                User.id_user,
-                User.user_name,
-                User.user_phone,
-                User.user_email,
-                User.user_picture,
-                User.city,
-                User.password,
-                User.soft_delete AS user_soft_delete
+                article.*,
+                user.id_user,
+                user.user_name,
+                user.user_phone,
+                user.user_email,
+                user.user_picture,
+                user.city,
+                user.password,
+                user.soft_delete AS user_soft_delete
             FROM
-                Article
+                article
             JOIN
-                User ON article.creator_id = User.id_user
+                user ON article.creator_id = user.id_user
             WHERE
-                Article.id_article=?";
+                article.id_article=?";
 
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
