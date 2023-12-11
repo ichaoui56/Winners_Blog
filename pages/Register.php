@@ -1,4 +1,8 @@
-<?php include("../includes/db.inc.php") ?>
+<?php include("../includes/db.inc.php");
+if (isset($_SESSION["login"])) {
+    header("Location: ../index.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
