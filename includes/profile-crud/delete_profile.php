@@ -25,7 +25,7 @@ if (isset($_SESSION["user_id"])) {
 
     if ($result) {
         session_destroy();
-        header('location: ../../pages/login.php');
+        header('location: ../../pages/login.php?deleted=true');
         exit();
     } else {
         echo "Error in updating account.";
