@@ -1,8 +1,10 @@
 <?php
 
 include("../includes/db.inc.php");
-
-
+$a  = $_GET["id"];
+$sqlCom = "SELECT * FROM comment WHERE creator_id = '$_SESSION[user_id]' and article_id='$a'";
+$comments = $conn->query($sqlCom);
+$t = $comments->fetch_assoc();
 
 function getArticleUser($articleId, $conn)
 {
@@ -36,29 +38,17 @@ function getArticleUser($articleId, $conn)
 
     return $output;
 }
-
-
-
 // Retrieve the article ID from the URL
 $articleId = isset($_GET['id']) ? $_GET['id'] : null;
-
-
-
-
 // Check if the ID is valid
 if ($articleId) {
-    // Fetch the article based on the ID
     $user = getArticleUser($articleId, $conn);
-
-    //var_dump($user);
-
-    // Check if the article exists
     if (!empty($user)) { ?>
-
 
 
         <!DOCTYPE html>
         <html lang="en">
+
 
         <head>
             <meta charset="UTF-8">
@@ -74,7 +64,6 @@ if ($articleId) {
 
             <!------------------------------------------start navbar---------------------------------------------- -->
 
-
             <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
             <script src="../js/script.js"></script>
 
@@ -85,7 +74,9 @@ if ($articleId) {
 
 
 
+
             <!------------------------------------------start container---------------------------------------------- -->
+
 
 
             <main class="pt-8 mx-10 rounded-2xl pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
@@ -95,11 +86,12 @@ if ($articleId) {
                             <address class="flex items-center mb-6 not-italic">
                                 <?php foreach ($user as $singleUser) : ?>
 
+
                                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-                                        <?= '<a href="./User-Profile.php"><img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" ></a>'; ?>
+                                        <?= '<img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" >'; ?>
 
                                         <div>
-                                            <a href="./User-Profile.php" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">
+                                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">
                                                 <?= $singleUser["user_name"]; ?>
                                             </a>
                                             <p class="text-base text-gray-500 dark:text-gray-400">
@@ -122,17 +114,42 @@ if ($articleId) {
 
                     <form method="post" id="commentForm" class="py-2 mt-8 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                         <label for="comment" class="sr-only">Your comment</label>
-                        <input id="text_cmt" name="text_cmt" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 outline-none focus:ring-0 " placeholder="Write a comment..." required />
+                        <input value=<?php echo $a; ?> name="articleId" type="hidden" />
+                        <input id="text_cmt" name="text_cmt" rows="6" class="px-0 w-full text-sm text-gray-900 border-0 outline-none focus:ring-0 " placeholder="Write a comment..." value="" required />
                         <button type="submit" name="submitComment" onclick="submitForm()" id="submitComment" class="inline-flex items-center py-2.5 px-4 text-xs font-md text-center text-white bg-gray-700 rounded-lg focus:ring-4 focus:blue-200 dark:focus:blue-700 hover:bg-primary-800">
                             Post comment
                         </button>
                     </form>
 
-                    <div class="flex items-center">
-                        <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white"><img class="mr-2 w-6 h-6 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Michael Gough">Michael Gough</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
+
+                    <div id="commentSec">
+                        <?php
+                        while ($r = $comments->fetch_assoc()) {
+                            $sqlUsr = "SELECT * FROM user WHERE id_user = '$t[creator_id]'";
+                            $u = $conn->query($sqlUsr);
+                            $username = $u->fetch_assoc();
+                            echo "
+                        <div class='flex items-center'>
+                        <p class='text-sm text-gray-600 dark:text-gray-400'><time pubdate datetime='2022-02-08' title='February 8th, 2022'>$r[date_cmt]</time></p>
+                        </div> 
+                        ";
+                            //echo "<p class='inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white'><img class='mr-2 w-6 h-6 rounded-full' src='https://flowbite.com/docs/images/people/profile-picture-2.jpg'>" . $username["user_name"] . "</p>";
+                            //echo "<p class='text-white text-sm px-4 py-2 text-gray-700' id='commentDisplay'>" . $r["text_cmt"] ."</p>";
+
+                            // Display user's profile picture and username for the comment
+                            echo "
+                        <div class='flex items-center'>
+                            <img class='mr-2 w-6 h-6 rounded-full' src='data:image/png;base64," . base64_encode($username["user_picture"]) . "' alt='profile_pic'>
+                            <p class='inline-flex items-center mr-3 font-semibold text-sm text-gray-900 dark:text-white'>
+                                " . $username["user_name"] . "
+                            </p>
+                        </div>
+        ";
+
+                            echo "<p class='text-white text-sm px-4 py-2 text-gray-700' id='commentDisplay'>" . $r["text_cmt"] . "</p>";
+                        }
+                        ?>
                     </div>
-                    <p class="text-white text-sm px-4 py-2 text-gray-700" id="commentDisplay"> </p>
                     </article>
                 </div>
             </main>
@@ -157,23 +174,81 @@ if ($articleId) {
                 });
             </script>
 
+            <!----------------------------------------- get and post comment --------------------------------------------------->
+
             <script>
-                function submitForm() {
-                    var formData = $("#commentForm").serialize();
+                $(document).ready(function() {
 
-                    $.ajax({
-                        type: "POST",
-                        url: "articleInsert.php",
-                        data: formData,
-                        success: function(response) {
-                            $("#result").html(response);
-                        }
-                    });
+                    // Function to fetch comments without refreshing the page
+                    function fetchComments() {
+                        var articleId = <?php echo $a; ?>; // Get the article ID from PHP
+                        //console.log("id: " + articleId);  // Check if the input is captured
 
+                        $.ajax({
+                            type: "GET",
+                            url: "fetchComment.php",
+                            data: {
+                                article_id: articleId
+                            },
+                            success: function(response) {
+                                // Parse the JSON response containing comments
+                                var comments = JSON.parse(response);
+
+                                $("#commentSec").empty();
+
+                                // Iterate through comments and append them to the comment section
+                                comments.forEach(function(comment) {
+                                    console.log(comment);
+                                    <?php $user = getSpecificUser($userId, $conn); ?>
+                                    var user = "<?php echo $user["user_name"]; ?>";
+                                    var htmlTemplate = `
+                            <div class='flex items-center'>
+                                <h1 class='text-md px-4 py-2 text-black font-medium' > ${user} </h1>
+                                <p class='text-white text-sm px-4 py-2 text-gray-700' > ${comment.text_cmt} </p>
+                                <p class='text-sm text-gray-600 dark:text-gray-400'>
+                                    <time pubdate datetime='${comment.date_cmt}' title='${comment.date_cmt}'>${comment.date_cmt}</time>
+                                </p>
+                            </div>
+                        `;
+
+                                    $("#commentSec").append(htmlTemplate);
+                                });
+
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                            }
+                        });
+                    }
+
+                    // Call fetchComments when the page loads to display existing comments
+                    fetchComments();
+
+                    // Handle form submission to add new comments
                     $("#commentForm").submit(function(e) {
                         e.preventDefault();
+                        submitForm();
                     });
-                }
+
+                    // Function to submit the comment form
+                    function submitForm() {
+                        var formData = $("#commentForm").serialize();
+                        $.ajax({
+                            type: "POST",
+                            url: "articleInsert.php",
+                            data: formData,
+                            success: function(response) {
+                                $("#result").html(response);
+                                // Optionally, you can fetch and append the new comment immediately
+                                fetchComments();
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(error);
+                            }
+                        });
+                    }
+                });
+
             </script>
             <!------------------------------------------ end footer --------------------------------------------------------->
         </body>
