@@ -13,7 +13,7 @@ try {
 } catch (mysqli_sql_exception) {
     echo "Not connected: ";
 }
-Create Database
+
 $sql_create_db = "CREATE DATABASE IF NOT EXISTS if0_35553201_blog";
 $req=mysqli_query($conn, $sql_create_db);
 
