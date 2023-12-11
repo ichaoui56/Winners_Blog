@@ -33,8 +33,8 @@ if (isset($_SESSION["login"])) {
 
 
 
-    <div class="flex mb-32  items-center justify-center">
-        <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt="">
+    <div class="flex mb-32  items-center justify-center h-screen">
+        <!-- <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt=""> -->
         <div class="ilyas w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300" class="relative w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300">
             <h1 class="text-4xl font-medium">Reset password</h1>
             <p class="text-slate-500">Fill up the form to reset the password</p>
