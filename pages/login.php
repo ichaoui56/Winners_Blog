@@ -10,6 +10,8 @@ if (isset($_SESSION["login"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
@@ -131,6 +133,33 @@ if (isset($_SESSION["login"])) {
             density: 0.1,
             frequency: 20
         });
+
+        <?php
+        if (isset($_GET["user"])) { ?>
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        <?php } ?>
+        <?php
+        if (isset($_GET["password"])) { ?>
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        <?php } ?>
+        <?php
+        if (isset($_GET["pasword"])) { ?>
+            Swal.fire({
+                icon: "success",
+                title: "Done",
+                text: "Password changed!",
+            });
+        <?php } ?>
     </script>
 
     <!----------------------------- end footer ------------------------------------->
