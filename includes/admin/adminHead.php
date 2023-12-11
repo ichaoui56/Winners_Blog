@@ -1,4 +1,9 @@
 <?php 
+
+// session_start();
+// session_destroy();
+// header('Location: ../index.php?logout=true');
+
 echo(
     "
     <nav class='bg-blue-500 text-white font-bold flex justify-around py-2'>
