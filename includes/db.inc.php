@@ -21,4 +21,3 @@ $req=mysqli_query($conn, $sql_create_db);
 if(!$req){
     echo "Error creating database: " . mysqli_error($conn);
 }
-
