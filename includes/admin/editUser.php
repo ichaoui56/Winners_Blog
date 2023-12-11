@@ -11,7 +11,7 @@ if(isset($_POST["edit"])){
     $oldUsername = $_POST["username"]; 
     $sql = "UPDATE user SET user_name='$newUsername',user_phone='$phone',
        user_email='$newEmail',user_picture='$picture',
-       password='$newPassword' WHERE user_name='$oldUsername'";
+       password='$newPassword' WHERE user_email='$oldUsername'";
     
     if($conn->query($sql)){
       echo("<script>alert('user edited successfully!')</script>") . $oldUsername . "yes";
@@ -37,9 +37,9 @@ if(isset($_POST["edit"])){
     
     <div class="mb-6">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        username
+        email
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name="username" placeholder="username">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name="username" placeholder="Your current eamil">
     </div>
 
     <div class="mb-6">

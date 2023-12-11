@@ -1,6 +1,6 @@
 <?php
-include "adminHead.php";
 include "../db.inc.php";
+include "adminHead.php";
 ?>
 <?php
 include("db.inc.php");
