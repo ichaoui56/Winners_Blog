@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-    <form class="space-y-6 pt- mx-10 flex justify-center items-center  mb-20 bg-transparent" action="../includes/profile-crud/update_profile.php" method="post" enctype="multipart/form-data">
+    <form class="h-screen space-y-6 pt- mx-10 flex justify-center items-center  mb-20 bg-transparent" action="../includes/profile-crud/update_profile.php" method="post" enctype="multipart/form-data">
         <div class="lwa3er" class="flex  absolute">
             <div class="m-auto  w-[400px] sm:w-[450px] md:w-[600px] sm:w-[550px]  ">
                 <div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-        <img src="../pictures/profile-bg.jpg" alt="" width="100%" class="tswera" class="rounded-3xl hidden lg:block">
+        <!-- <img src="../pictures/profile-bg.jpg" alt="" width="100%" class="tswera" class="rounded-3xl hidden lg:block"> -->
 
     </form>
 
