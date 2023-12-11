@@ -1,11 +1,10 @@
 <?php 
-include "adminHead.php";
 include '../db.inc.php';
+include "adminHead.php";
 if(isset($_POST["delete"])){
     $sql = "DELETE FROM user WHERE user_email='$_POST[email]'";
     $conn->query($sql);
 }
-
 ?>
 
 <!DOCTYPE html>

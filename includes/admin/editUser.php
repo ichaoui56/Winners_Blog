@@ -1,6 +1,7 @@
 <?php
-include "adminHead.php";
 include "../db.inc.php";
+include "adminHead.php";
+
 if(isset($_POST["edit"])){
     $newUsername = $_POST["newUsername"];
     $newEmail = $_POST["newEmail"];
