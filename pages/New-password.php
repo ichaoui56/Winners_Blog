@@ -1,4 +1,8 @@
-<?php include("../includes/db.inc.php") ?>
+<?php include("../includes/db.inc.php");
+if (isset($_SESSION["login"])) {
+    header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,8 +41,8 @@
         if (ctype_xdigit($selector) && ctype_xdigit($selector)) {
     ?>
 
-            <div class="flex mb-32  items-center justify-center">
-                <img src="../pictures/new-pass-pic.png" class="hidden lg:block  rounded-2xl" alt="">
+            <div class="flex mb-32  items-center justify-center h-screen">
+                <!-- <img src="../pictures/new-pass-pic.png" class="hidden lg:block  rounded-2xl" alt=""> -->
                 <div class="chaoui w-[400px] bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300" class="relative max-w-lg bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300">
                     <h1 class="text-4xl font-medium">Change password</h1>
                     <p class="text-slate-500">Fill up the form to change your password</p>

@@ -34,6 +34,10 @@ The project is organized into various directories and files, specifically focusi
 
 *... (List of directories and files specific to the blog, as mentioned in the previous responses)*
 
+## Website and Repository Links
+- [Avito Blog Website](http://avitoblog.000.pe/)
+- [Avito Blog Repository](https://github.com/Youcode-Classe-E-2023-2024/Winners_Blog)
+
 ## How to Contribute
 If you'd like to contribute to the Avito Blog project, please follow these steps:
 

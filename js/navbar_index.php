@@ -1,7 +1,7 @@
 <?php
 
 require("./includes/utils/fetchData.php");
-if (isset($_SESSION["user_id"])) {
+if (isset($_SESSION["user_id"], $_SESSION["login"])) {
     $userId = $_SESSION["user_id"];
     $userInfo = getSpecificUser($userId, $conn);
     $username = $userInfo["user_name"];

@@ -1,6 +1,4 @@
 <?php
-
-
 function getSpecificUser($userId, $conn)
 {
     $sql = "SELECT * FROM user WHERE id_user=?";
@@ -15,26 +13,13 @@ function getSpecificUser($userId, $conn)
     return ($row);
 }
 
-function getAllUsers()
-{
-
-    $output = array();
-    $sql = "SELECT * FROM user";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_execute($stmt);
-    $res = mysqli_stmt_get_result($stmt);
-    while ($row = mysqli_fetch_assoc($res)) {
-        $output[] = $row;
-    }
-    return ($output);
-}
-
 function getAllArticles($conn)
 {
 
     $output = array();
-    $sql = "SELECT * FROM article_view";
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+    c.id_category, c.category FROM article a
+    LEFT JOIN category c ON a.category_id = c.id_category ORDER BY id_article DESC";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
@@ -47,7 +32,10 @@ function getAllArticles($conn)
 
 function getArticle($conn, $articleId)
 {
-    $sql = "SELECT * FROM article_view WHERE id_article=?";
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+    c.id_category, c.category
+FROM article a
+LEFT JOIN category c ON a.category_id = c.id_category WHERE id_article=?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "i", $articleId);
@@ -56,24 +44,6 @@ function getArticle($conn, $articleId)
     $row = mysqli_fetch_assoc($res);
     return ($row);
 }
-
-function getArticleSpecific1($userId, $conn)
-{
-
-
-    $output = array();
-    $sql = "SELECT * FROM article WHERE creator_id=?";
-    $stmt = mysqli_stmt_init($conn);
-    mysqli_stmt_prepare($stmt, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $userId);
-    mysqli_stmt_execute($stmt);
-    $res = mysqli_stmt_get_result($stmt);
-    while ($row = mysqli_fetch_assoc($res)) {
-        $output[] = $row;
-    }
-    return ($output);
-}
-
 
 function getcomments($articleID)
 {
@@ -93,7 +63,10 @@ function getcomments($articleID)
 
 function getArticleSpecific($userId, $conn)
 {
-    $sql = "SELECT * FROM article_view WHERE creator_id = ?";
+    $sql = "SELECT a.id_article, a.title, a.description, a.article_picture, a.article_date, a.creator_id, a.soft_delete,
+    c.id_category, c.category
+FROM article a
+LEFT JOIN category c ON a.category_id = c.id_category WHERE creator_id = ? GROUP BY id_article DESC";
 
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $userId);

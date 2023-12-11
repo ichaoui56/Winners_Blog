@@ -96,10 +96,10 @@ if (!empty($user)) { ?>
           <?php foreach ($user as $singleUser) : ?>
 
         <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
-            <?=  '<img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" >'; ?>
+            <?=  '<a href="./User-Profile.php"><img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" ></a>'; ?>
 
                             <div>
-                                <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">
+                                <a href="./User-Profile.php" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">
                                     <?= $singleUser["user_name"]; ?>
                                 </a>
                                 <p class="text-base text-gray-500 dark:text-gray-400">
