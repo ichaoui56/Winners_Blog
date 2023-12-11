@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include "../includes/db.inc.php";
     $comment = $_POST["text_cmt"];
     $date_cmt = date('Y-m-d H:i:s');
@@ -13,3 +12,4 @@
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+

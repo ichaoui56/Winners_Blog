@@ -11,6 +11,8 @@ if (isset($_SESSION["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
     <link rel="stylesheet" href="../css/style.css">
@@ -63,7 +65,6 @@ if (isset($_SESSION["login"])) {
         width: 100px;
         z-index: 100;
     }
-    
 </style>
 
 <body class="bg-gray-300 " style="background-color: #d5deef;">
@@ -235,6 +236,16 @@ if (isset($_SESSION["login"])) {
             density: 0.1,
             frequency: 20
         });
+
+        <?php
+        if (isset($_GET["userRegister"])) { ?>
+            Swal.fire({
+                icon: "error",
+                title: "User already exist!",
+                text: "Change your email.",
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        <?php } ?>
     </script>
 
     <!----------------------------- end footer ------------------------------------->

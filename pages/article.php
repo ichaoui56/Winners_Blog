@@ -10,21 +10,21 @@ function getArticleUser($articleId, $conn)
 {
     $output = array();
     $sql = "SELECT
-                Article.*,
-                User.id_user,
-                User.user_name,
-                User.user_phone,
-                User.user_email,
-                User.user_picture,
-                User.city,
-                User.password,
-                User.soft_delete AS user_soft_delete
+                article.*,
+                user.id_user,
+                user.user_name,
+                user.user_phone,
+                user.user_email,
+                user.user_picture,
+                user.city,
+                user.password,
+                user.soft_delete AS user_soft_delete
             FROM
-                Article
+                article
             JOIN
-                User ON Article.creator_id = User.id_user
+                user ON article.creator_id = user.id_user
             WHERE
-                Article.id_article=?";
+                article.id_article=?";
 
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
@@ -46,9 +46,9 @@ if ($articleId) {
     if (!empty($user)) { ?>
 
 
-
         <!DOCTYPE html>
         <html lang="en">
+
 
         <head>
             <meta charset="UTF-8">
@@ -64,7 +64,6 @@ if ($articleId) {
 
             <!------------------------------------------start navbar---------------------------------------------- -->
 
-
             <div id="navbar-container"><?php include("../js/navbar.php"); ?></div>
             <script src="../js/script.js"></script>
 
@@ -75,7 +74,9 @@ if ($articleId) {
 
 
 
+
             <!------------------------------------------start container---------------------------------------------- -->
+
 
 
             <main class="pt-8 mx-10 rounded-2xl pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
@@ -84,6 +85,7 @@ if ($articleId) {
                         <header class="mb-4 lg:mb-6 not-format">
                             <address class="flex items-center mb-6 not-italic">
                                 <?php foreach ($user as $singleUser) : ?>
+
 
                                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                                         <?= '<img src="data:image/png;base64,' . base64_encode($singleUser["user_picture"]) . '" alt="profile_pic" class="mr-4 w-16 h-16 rounded-full" >'; ?>
@@ -119,6 +121,7 @@ if ($articleId) {
                         </button>
                     </form>
 
+
                     <div id="commentSec">
                         <?php
                         while ($r = $comments->fetch_assoc()) {
@@ -147,7 +150,6 @@ if ($articleId) {
                         }
                         ?>
                     </div>
-
                     </article>
                 </div>
             </main>
@@ -171,6 +173,7 @@ if ($articleId) {
                     frequency: 20
                 });
             </script>
+
             <!----------------------------------------- get and post comment --------------------------------------------------->
 
             <script>
@@ -245,6 +248,7 @@ if ($articleId) {
                         });
                     }
                 });
+
             </script>
             <!------------------------------------------ end footer --------------------------------------------------------->
         </body>

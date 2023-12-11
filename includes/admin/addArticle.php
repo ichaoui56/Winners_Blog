@@ -1,6 +1,6 @@
 <?php
-include "adminHead.php";
 include '../db.inc.php';
+include "adminHead.php";
 
 if (isset($_POST['submit'])) {
     $article_titles = $_POST["article_title"];

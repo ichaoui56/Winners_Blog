@@ -12,6 +12,8 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../pictures/avito.png" />
     <link rel="stylesheet" href="../css/style.css">
@@ -63,7 +65,7 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
                     <div class="flex flex-wrap justify-center">
                         <div class="w-full px-4 flex justify-center">
                             <div class="relative">
-                                <?php echo '<img src="data:image/png;base64,' . base64_encode($userPic) . '" alt="" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">';
+                                <?php echo '<img src="data:image/png;base64,' . base64_encode($userpic) . '" alt="" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">';
                                 ?>
                             </div>
                         </div>
@@ -71,13 +73,13 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
                             <div class="flex justify-center py-4 lg:pt-4 pt-8">
                                 <div class="mr-4 p-3 text-center">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                    <?= $articleCount ?>
+                                        <?= $articleCount ?>
                                     </span>
                                     <span class="text-sm text-blueGray-400">Annonces</span>
                                 </div>
                                 <div class="lg:mr-4 p-3 text-center">
                                     <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                    <?= $commentCount ?>
+                                        <?= $commentCount ?>
                                     </span>
                                     <span class="text-sm text-blueGray-400">Comments</span>
                                 </div>
@@ -96,7 +98,7 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
                             <span class="relative invisible">Button</span>
                         </a>
 
-                        <a href="../includes/profile-crud/delete_profile.php" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-red-600 transition duration-300 ease-out border-2 border-red-500 rounded-full shadow-md group">
+                        <a onclick="ShowDeleteAlert(<?php echo $_SESSION['user_id'] ?>)" class="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-red-600 transition duration-300 ease-out border-2 border-red-500 rounded-full shadow-md group">
                             <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-red-500 group-hover:translate-x-0 ease">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -163,6 +165,25 @@ if (empty($_SESSION["user_id"]) || empty($_SESSION["login"])) {
             density: 0.1,
             frequency: 20
         });
+
+
+        function ShowDeleteAlert(id) {
+            console.log(id);
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    href = "../includes/profile-crud/delete_profile.php"
+                    window.location.href = "http://localhost/Winners_Blog/includes/profile-crud/delete_profile.php?user_id=" + id;
+                }
+            });
+        }
     </script>
 
     <!----------------------------- end footer ------------------------------------->
