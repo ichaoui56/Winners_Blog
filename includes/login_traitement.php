@@ -1,7 +1,6 @@
 <?php
 
 include("./db.inc.php");
-session_start();
 if (isset($_POST["sigin_submit"])) {
     $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);

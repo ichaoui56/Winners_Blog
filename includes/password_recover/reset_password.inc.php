@@ -18,7 +18,7 @@ if (isset($_POST["reset-password-submit"])) {
         exit;
     }
 
-    $sql = "SELECT * FROM passwordRecovery WHERE pwd_reset_selector= ?";
+    $sql = "SELECT * FROM passwordrecovery WHERE pwd_reset_selector= ?";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_bind_param($stmt, "s", $selector);
@@ -47,7 +47,7 @@ if (isset($_POST["reset-password-submit"])) {
         } else {
             mysqli_stmt_bind_param($stmt, "s", $newHashedPsswd);
             mysqli_stmt_execute($stmt);
-            $sql = "DELETE FROM passwordRecovery WHERE pwd_reset_email='$user_email'";
+            $sql = "DELETE FROM passwordrecovery WHERE pwd_reset_email='$user_email'";
             $stmt = mysqli_stmt_init($conn);
             mysqli_stmt_prepare($stmt, $sql);
             mysqli_stmt_execute($stmt);

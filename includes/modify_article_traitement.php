@@ -1,6 +1,5 @@
 <?php
 include("db.inc.php");
-session_start();
 if (isset($_POST["submit"])) {
     $article_title = $_POST["article_title"];
     $article_description = $_POST["article_description"];

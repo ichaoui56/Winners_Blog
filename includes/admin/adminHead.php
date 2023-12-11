@@ -1,3 +1,4 @@
+
 <?php
 if (empty($_SESSION["adminLogin"])) {
 	header("Location: ./Login.php");
@@ -17,3 +18,4 @@ if (empty($_SESSION["adminLogin"])) {
         <button type='submit' name='logout'>logout</button>
     </form>
 </nav>
+

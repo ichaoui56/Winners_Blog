@@ -33,8 +33,8 @@ if (isset($_SESSION["login"])) {
 
 
 
-    <div class="flex mb-32  items-center justify-center">
-        <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt="">
+    <div class="flex mb-32  items-center justify-center h-screen">
+        <!-- <img src="../pictures/Reset_pic.png" class="hidden md:block rounded-2xl" alt=""> -->
         <div class="ilyas w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300" class="relative w-96 bg-white mx-auto my-10 border-2 border-black rounded-2xl p-8 rounded-xl shadow shadow-slate-300">
             <h1 class="text-4xl font-medium">Reset password</h1>
             <p class="text-slate-500">Fill up the form to reset the password</p>
@@ -50,7 +50,7 @@ if (isset($_SESSION["login"])) {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
                         </svg>
 
-                        <span>Find your email</span>
+                        <span>Find your Password</span>
                     </button>
                     <p class="text-center">Not registered yet? <a href="./Register.php" class="text-indigo-600 font-medium inline-flex space-x-1 items-center"><span>Register now
                             </span><span><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
