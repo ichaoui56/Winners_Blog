@@ -2,12 +2,22 @@
 
 include("../db.inc.php");
 
-session_start();
-
 if (isset($_SESSION["user_id"])) {
     $userId = $_SESSION["user_id"];
     $date = date("Y-m-d H:i:s");
     $Update_sql = "UPDATE User SET soft_delete = ? WHERE id_user = ?";
+
+    $stmt = mysqli_prepare($conn, $Update_sql);
+    mysqli_stmt_bind_param($stmt, "si", $date, $userId);
+    $result = mysqli_stmt_execute($stmt);
+
+    $Update_sql = "UPDATE article SET soft_delete = ? WHERE creator_id = ?";
+
+    $stmt = mysqli_prepare($conn, $Update_sql);
+    mysqli_stmt_bind_param($stmt, "si", $date, $userId);
+    $result = mysqli_stmt_execute($stmt);
+
+    $Update_sql = "UPDATE comment SET soft_delete = ? WHERE creator_id = ?";
 
     $stmt = mysqli_prepare($conn, $Update_sql);
     mysqli_stmt_bind_param($stmt, "si", $date, $userId);
