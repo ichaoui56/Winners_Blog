@@ -138,18 +138,15 @@ if (isset($_SESSION["login"])) {
         if (isset($_GET["user"])) { ?>
             Swal.fire({
                 icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
+                title: "User not found",
+                text: "Please change your email !",
             });
         <?php } ?>
         <?php
         if (isset($_GET["password"])) { ?>
             Swal.fire({
                 icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="#">Why do I have this issue?</a>'
+                title: "Password inccorect",
             });
         <?php } ?>
         <?php
@@ -158,6 +155,14 @@ if (isset($_SESSION["login"])) {
                 icon: "success",
                 title: "Done",
                 text: "Password changed!",
+            });
+        <?php } ?>
+        <?php
+        if (isset($_GET["reset"])) { ?>
+            Swal.fire({
+                icon: "success",
+                title: "Avito sent an message to your emil",
+                text: "Please check it !",
             });
         <?php } ?>
     </script>
