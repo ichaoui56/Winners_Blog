@@ -11,7 +11,7 @@ if (isset($_GET["articleId"])) {
 
     if (mysqli_stmt_execute($stmt)) {
 
-        header("Location: ../pages/my_article.php?artile=deleted");
+        header("Location: ./admin/admin.php?artile=deleted");
     } else {
         echo "<script>alert('matamsa7ch')</script>";
     }
