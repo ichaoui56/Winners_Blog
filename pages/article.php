@@ -110,8 +110,11 @@ if ($articleId) {
                         <p class="lead text-[#9CA3A2]">
                             <?php echo $singleUser["description"]; ?>
                         </p>
-                    <?php endforeach; ?>
-
+                    <?php endforeach; 
+                    
+                    if (isset($_SESSION["login"])) {
+                    ?>
+                        
                     <form method="post" id="commentForm" class="py-2 mt-8 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
                         <label for="comment" class="sr-only">Your comment</label>
                         <input value=<?php echo $a; ?> name="articleId" type="hidden" />
@@ -121,7 +124,7 @@ if ($articleId) {
                         </button>
                     </form>
 
-
+                        <?php }?>
                     <div id="commentSec">
                         <?php
                         while ($r = $comments->fetch_assoc()) {
