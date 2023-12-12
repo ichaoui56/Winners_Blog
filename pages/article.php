@@ -2,7 +2,7 @@
 
 include("../includes/db.inc.php");
 $a  = $_GET["id"];
-$sqlCom = "SELECT * FROM comment WHERE and article_id='$a'";
+$sqlCom = "SELECT * FROM comment WHERE article_id='$a'";
 $comments = $conn->query($sqlCom);
 $t = $comments->fetch_assoc();
 
