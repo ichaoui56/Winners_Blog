@@ -7,7 +7,7 @@ if (isset($_GET["articleId"])) {
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
-    header("Location: ../pages/my_article.php?article=deleted");
+    header("Location: ./admin/admin.php?article=deleted");
 } else {
     header("Location: ../index.php");
 }
