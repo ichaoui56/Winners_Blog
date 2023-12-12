@@ -2,7 +2,7 @@
 
 include("../includes/db.inc.php");
 $a  = $_GET["id"];
-$sqlCom = "SELECT * FROM comment WHERE creator_id = '$_SESSION[user_id]' and article_id='$a'";
+$sqlCom = "SELECT * FROM comment WHERE and article_id='$a'";
 $comments = $conn->query($sqlCom);
 $t = $comments->fetch_assoc();
 
@@ -245,7 +245,6 @@ if ($articleId) {
                         });
                     }
                 });
-
             </script>
             <!------------------------------------------ end footer --------------------------------------------------------->
         </body>
