@@ -1,4 +1,4 @@
-# Avito Blog - Unveiling Tech Insights in Our Marketplace
+# Avito Blog - Unveiling Tech Insights in Our Marketplace (brief-7)
 ![Avito](https://github.com/Youcode-Classe-E-2023-2024/Winners_Blog/assets/109225791/65464cce-a00a-48ce-bcc0-cd8b827b77ae)
 
 
